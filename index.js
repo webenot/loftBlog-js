@@ -63,19 +63,26 @@ let newFunc = summ.bind(a, 1);
 setTimeout(a.f.bind(a), 1000);*/
 
 let F = function (name) {
-    this.setName = function (name) {
-        this.name = name;
-    };
-
-    this.getName = function () {
-        return this.name;
-    };
-
     this.setName(name);
+};
+
+F.prototype.setName = function (name) {
+    this.name = name;
+};
+
+F.prototype.getName = function () {
+    return this.name;
 };
 
 let obj1 = new F('Сергей'),
     obj2 = new F('Андрей');
+/*
+console.log(obj1.getName());
+obj1.setName('Николай');
+console.log(obj1.getName());*/
+
+//console.log(F.prototype);
+
 console.log(obj1.getName());
 obj1.setName('Николай');
 console.log(obj1.getName());
