@@ -2,7 +2,7 @@
  * Created by aquilla on 07.01.2017.
  */
 function summ (a, b) {
-    console.log(this.prop + a + b);
+    return this.prop + a + b;
 }
 var a = {
     prop: 1,
@@ -33,5 +33,5 @@ b.f = b.f.bind(a, 2, 2);
 a.f();
 b.f();*/
 
-summ.call(a, 1, 1);
-summ.call(b, 2, 2);
+console.log(summ.call(a, 1, 1));
+console.log(summ.call(b, 2, 2));
