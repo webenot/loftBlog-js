@@ -83,6 +83,8 @@ console.log(obj1.getName());*/
 
 //console.log(F.prototype);
 
+console.log(F.prototype === obj1.__proto__);
+
 console.log(obj1.getName());
 obj1.setName('Николай');
 console.log(obj1.getName());
