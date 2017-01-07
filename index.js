@@ -98,6 +98,11 @@ F.prototype.getName = function () {
 // правильно - 1 способ
 inherit(F2, F);
 
+F2.prototype.setName = function (name) {
+    this.name = name;
+    console.log('Новое имя установлено');
+};
+
 F2.prototype.setAge = function (age) {
     this.age = age;
 };
