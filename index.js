@@ -66,5 +66,7 @@ let F = function (name) {
     this.name = name;
 };
 
-let obj = new F('Сергей');
-console.log(obj);
+let obj1 = new F('Сергей'),
+    obj2 = new F('Андрей');
+console.log(obj1);
+console.log(obj2);
