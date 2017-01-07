@@ -5,7 +5,7 @@ function summ (a, b) {
     //console.log(this);
     return this.prop + a + b;
 }
-var a = {
+let a = {
         prop: 1,
         f: function () {
             var that = this;
@@ -55,6 +55,8 @@ a['f'](1, 1);*/
 //a.f();
 
 //var newFunc = summ.bind(a, 1).bind(a, 1);
-var newFunc = summ.bind(a, 1);
+let newFunc = summ.bind(a, 1);
 //newFunc = newFunc.bind(a, 1);
-console.log(newFunc(2));
+//console.log(newFunc(2));
+
+setTimeout(a.f.bind(a), 1000);
