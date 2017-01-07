@@ -54,6 +54,6 @@ a['f'](1, 1);*/
 
 //a.f();
 
-var newFunc = summ.bind(a, 1);
-newFunc = newFunc.bind(a, 1);
+var newFunc = summ.bind(a, 1).bind(a, 1);
+//newFunc = newFunc.bind(a, 1);
 console.log(newFunc());
