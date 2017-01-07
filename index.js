@@ -33,5 +33,5 @@ b.f = b.f.bind(a, 2, 2);
 a.f();
 b.f();*/
 
-console.log(summ.call(a, 1, 1));
-console.log(summ.call(b, 2, 2));
+console.log(summ.apply(a, [1, 1]));
+console.log(summ.apply(b, [2, 2]));
