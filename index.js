@@ -24,11 +24,14 @@ newFunc();*/
 a.f();
 b.f();*/
 
-a.f(1, 1);
+/*a.f(1, 1);
 b.f(2, 2);
 
 a.f = a.f.bind(b, 1, 1);
 b.f = b.f.bind(a, 2, 2);
 
 a.f();
-b.f();
+b.f();*/
+
+summ.call(a, 1, 1);
+summ.call(b, 2, 2);
