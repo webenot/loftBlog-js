@@ -2,19 +2,19 @@
  * Created by aquilla on 07.01.2017.
  */
 function summ (a, b) {
-    console.log(this);
+    //console.log(this);
     return this.prop + a + b;
 }
 var a = {
-    prop: 1,
-    f: function () {
-        var that = this;
-        var func = function () {
-            console.log(that.prop);
-        };
-        func();
-    }
-},
+        prop: 1,
+        f: function () {
+            var that = this;
+            var func = function () {
+                console.log(that.prop);
+            };
+            func();
+        }
+    },
     b = {
         prop: 2,
         f: summ
@@ -52,4 +52,8 @@ a.f(1, 1);
 // Равносильно
 a['f'](1, 1);*/
 
-a.f();
+//a.f();
+
+var newFunc = summ.bind(a, 1);
+newFunc = newFunc.bind(a, 1);
+console.log(newFunc());
