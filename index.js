@@ -100,7 +100,8 @@ inherit(F2, F);
 
 F2.prototype.setName = function (name) {
     //this.name = name;
-    F.prototype.setName.call(this, name);
+    //F.prototype.setName.call(this, name);
+    this.__proto__.__proto__.setName.call(this, name);
     console.log('Новое имя установлено');
 };
 
