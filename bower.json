@@ -1,0 +1,18 @@
+{
+  "name": "loftBlog-js",
+  "homepage": "https://github.com/webenot/loftBlog-js",
+  "description": "Learning JavaScript with LoftBlog",
+  "main": "",
+  "authors": [
+    "webenot"
+  ],
+  "license": "GNU",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
