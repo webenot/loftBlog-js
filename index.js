@@ -62,8 +62,9 @@ let newFunc = summ.bind(a, 1);
 
 setTimeout(a.f.bind(a), 1000);*/
 
-let F = function () {
+let F = function (name) {
+    this.name = name;
 };
 
-let obj = new F();
+let obj = new F('Сергей');
 console.log(obj);
