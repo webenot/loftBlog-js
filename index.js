@@ -62,6 +62,14 @@ let newFunc = summ.bind(a, 1);
 
 setTimeout(a.f.bind(a), 1000);*/
 
+function inherit(child, parent) {
+    let Temp = function () {
+        
+    };
+    Temp.prototype = parent.prototype;
+    child.prototype = new Temp();
+}
+
 let F = function (name) {
         this.setName(name);
     },
@@ -78,7 +86,11 @@ F.prototype.getName = function () {
     return this.name;
 };
 
-F2.prototype = F.prototype;
+// неправильно
+//F2.prototype = F.prototype;
+
+// правильно - 1 способ
+inherit(F2, F);
 
 F2.prototype.setAge = function (age) {
     this.age = age;
@@ -106,7 +118,9 @@ console.log(obj1.getName());
 
 console.log(obj1);*/
 
-obj1.setAge(30);
+// при правильном наследовании не сработает
+//obj1.setAge(30);
 
-console.log(obj1.getName(), obj1.getAge());
+//console.log(obj1.getName(), obj1.getAge());
+console.log(obj1.getName());
 console.log(obj2.getName(), obj2.getAge());
