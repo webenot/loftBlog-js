@@ -7,7 +7,12 @@ function summ (a, b) {
 }
 var a = {
     prop: 1,
-    f: summ
+    f: function () {
+        var func = function () {
+            console.log(this.prop);
+        };
+        func();
+    }
 },
     b = {
         prop: 2,
@@ -41,6 +46,9 @@ console.log(summ.apply(b, [2, 2]));*/
 summ(1, 1);
 */
 
+/*
 a.f(1, 1);
 // Равносильно
-a['f'](1, 1);
+a['f'](1, 1);*/
+
+a.f();
