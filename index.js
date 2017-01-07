@@ -1,17 +1,16 @@
 /**
  * Created by aquilla on 07.01.2017.
  */
+function summ (a, b) {
+    console.log(this.prop + a + b);
+}
 var a = {
     prop: 1,
-    f: function () {
-        console.log(this.prop);
-    }
+    f: summ
 },
     b = {
         prop: 2,
-        f: function () {
-            console.log(this.prop);
-        }
+        f: summ
     };
 /*
 a.f();
@@ -20,7 +19,16 @@ var newFunc = a.f.bind(b);
 
 newFunc();*/
 
-a.f = a.f.bind(b);
+/*a.f = a.f.bind(b);
+
+a.f();
+b.f();*/
+
+a.f(1, 1);
+b.f(2, 2);
+
+a.f = a.f.bind(b, 1, 1);
+b.f = b.f.bind(a, 2, 2);
 
 a.f();
 b.f();
