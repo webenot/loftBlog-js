@@ -37,4 +37,10 @@ b.f();*/
 /*console.log(summ.apply(a, [1, 1]));
 console.log(summ.apply(b, [2, 2]));*/
 
+/*
 summ(1, 1);
+*/
+
+a.f(1, 1);
+// Равносильно
+a['f'](1, 1);
