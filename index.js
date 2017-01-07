@@ -2,6 +2,7 @@
  * Created by aquilla on 07.01.2017.
  */
 function summ (a, b) {
+    console.log(this);
     return this.prop + a + b;
 }
 var a = {
@@ -33,5 +34,7 @@ b.f = b.f.bind(a, 2, 2);
 a.f();
 b.f();*/
 
-console.log(summ.apply(a, [1, 1]));
-console.log(summ.apply(b, [2, 2]));
+/*console.log(summ.apply(a, [1, 1]));
+console.log(summ.apply(b, [2, 2]));*/
+
+summ(1, 1);
