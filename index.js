@@ -106,5 +106,7 @@ console.log(obj1.getName());
 
 console.log(obj1);*/
 
-console.log(obj1.getName());
+obj1.setAge(30);
+
+console.log(obj1.getName(), obj1.getAge());
 console.log(obj2.getName(), obj2.getAge());
