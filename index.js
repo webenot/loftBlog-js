@@ -68,5 +68,5 @@ let F = function (name) {
 
 let obj1 = new F('Сергей'),
     obj2 = new F('Андрей');
-console.log(obj1);
+console.log(obj1.constructor);
 console.log(obj2);
