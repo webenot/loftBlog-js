@@ -8,8 +8,9 @@ function summ (a, b) {
 var a = {
     prop: 1,
     f: function () {
+        var that = this;
         var func = function () {
-            console.log(this.prop);
+            console.log(that.prop);
         };
         func();
     }
