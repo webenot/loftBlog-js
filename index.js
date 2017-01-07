@@ -62,12 +62,18 @@ let newFunc = summ.bind(a, 1);
 
 setTimeout(a.f.bind(a), 1000);*/
 
+//=========================================================
+
+// Создает прослойку, чтобы прототип родителя не получал методы и свойства наследника
 function inherit(child, parent) {
-    let Temp = function () {
+    /*let Temp = function () {
         
     };
     Temp.prototype = parent.prototype;
-    child.prototype = new Temp();
+    child.prototype = new Temp();*/
+
+    // В версии EcmaScript 6
+    child.prototype = Object.create(parent.prototype);
 }
 
 let F = function (name) {
@@ -124,3 +130,4 @@ console.log(obj1);*/
 //console.log(obj1.getName(), obj1.getAge());
 console.log(obj1.getName());
 console.log(obj2.getName(), obj2.getAge());
+
