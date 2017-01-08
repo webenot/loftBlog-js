@@ -11,6 +11,8 @@ function sum() {
 
 //let array = [1,2,3];
 
-let result = sum(1,2,3);
+let sum2 = sum;
+
+let result = sum2(1,2,3);
 
 console.log(result);
