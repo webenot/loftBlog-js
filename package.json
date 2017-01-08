@@ -1,7 +1,7 @@
 {
   "name": "LoftBlog-js",
   "homepage": "https://github.com/webenot/loftBlog-js",
-  "license": "GNU",
+  "license": "GPL-3.0",
   "version": "0.0.1",
   "username": "webenot",
   "description": "Изучение JavaScript по видео LoftBlog",
