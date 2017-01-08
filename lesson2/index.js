@@ -42,14 +42,14 @@ console.log(res);*/
 
 function func1(a) {
 	let b = 10;
-	let func2 = function () {
+	let func2 = function (d) {
 		let c = 100;
-		return a + b + c;
+		return a + b + c + d;
 	};
 
-	return func2();
+	return func2;
 }
 
 let res = func1(1);
-console.log(res);
+console.log(res(2));
 //console.log(res2);
