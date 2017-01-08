@@ -49,5 +49,5 @@ function func1() {
 }
 
 let res = func1();
-console.log(res());
+console.log(func1()());
 //console.log(res2);
