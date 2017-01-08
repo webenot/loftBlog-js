@@ -18,7 +18,7 @@ let result = sum2(1,2,3);
 
 console.log(result);*/
 
-function filter(source, fn) {
+/*unction filter(source, fn) {
 	let result = [];
 	for (let i = 0; i< source.length; i++) {
 		if (fn(source[i])) {
@@ -38,4 +38,16 @@ let res = filter(array, function (value) {
 	return value > 4;
 });
 
-console.log(res);
+console.log(res);*/
+
+function func1() {
+	let func2 = function () {
+		return 'Привет, Мир!';
+	};
+
+	return func2;
+}
+
+let res = func1();
+console.log(res());
+//console.log(res2);
