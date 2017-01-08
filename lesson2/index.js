@@ -41,12 +41,13 @@ let res = filter(array, function (value) {
 console.log(res);*/
 
 function func1(a) {
-	let func2 = function (b) {
+	let b = 10;
+	let func2 = function () {
 		let c = 100;
 		return a + b + c;
 	};
 
-	return func2(10);
+	return func2();
 }
 
 let res = func1(1);
