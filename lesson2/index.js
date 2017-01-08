@@ -18,18 +18,24 @@ let result = sum2(1,2,3);
 
 console.log(result);*/
 
-function filter(source, graterThan) {
+function filter(source, fn) {
 	let result = [];
 	for (let i = 0; i< source.length; i++) {
-		if (source[i] > graterThan) {
+		if (fn(source[i])) {
 			result.push(source[i]);
 		}
 	}
 	return result;
 }
 
+function greaterThan4(value) {
+	return value > 4;
+}
+
 let array = [1,2,3,4,5,6,7,8,9];
 
-let res = filter(array, 2);
+//console.log(res);
+
+let res = filter(array, greaterThan4);
 
 console.log(res);
