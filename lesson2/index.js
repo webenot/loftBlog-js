@@ -18,10 +18,10 @@ let result = sum2(1,2,3);
 
 console.log(result);*/
 
-function filter(source) {
+function filter(source, graterThan) {
 	let result = [];
 	for (let i = 0; i< source.length; i++) {
-		if (source[i] > 4) {
+		if (source[i] > graterThan) {
 			result.push(source[i]);
 		}
 	}
@@ -30,6 +30,6 @@ function filter(source) {
 
 let array = [1,2,3,4,5,6,7,8,9];
 
-let res = filter(array);
+let res = filter(array, 2);
 
 console.log(res);
