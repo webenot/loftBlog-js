@@ -40,14 +40,15 @@ let res = filter(array, function (value) {
 
 console.log(res);*/
 
-function func1() {
-	let func2 = function () {
-		return 'Привет, Мир!';
+function func1(a) {
+	let func2 = function (b) {
+		let c = 100;
+		return a + b + c;
 	};
 
-	return func2;
+	return func2(10);
 }
 
-let res = func1();
-console.log(func1()());
+let res = func1(1);
+console.log(res);
 //console.log(res2);
