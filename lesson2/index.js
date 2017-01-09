@@ -42,10 +42,10 @@ console.log(res);*/
 
 function func1(a) {
 	let b = 10;
-	let func2 = function (d) {
+	function func2(d) {
 		let c = 100;
 		return a + b + c + d;
-	};
+	}
 
 	return func2;
 }
