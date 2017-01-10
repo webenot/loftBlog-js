@@ -54,10 +54,23 @@ let res = func1(1);
 console.log(res(2));*/
 //console.log(res2);
 
+/*
 function rec(number) {
 	console.log(number--);
 	if (number >= 0)
 		rec(number);
 }
 
-rec(10);
+rec(10);*/
+
+let sum = (source) => {
+	let result = 0;
+	for (let i = 0; i < source.length; i++) {
+		result += source[i];
+	}
+	return result;
+};
+
+let array = [1, 2, 3];
+
+console.log(sum(array));
