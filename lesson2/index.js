@@ -40,7 +40,7 @@ let res = filter(array, function (value) {
 
 console.log(res);*/
 
-function func1(a) {
+/*function func1(a) {
 	let b = 10;
 	function func2(d) {
 		let c = 100;
@@ -51,5 +51,11 @@ function func1(a) {
 }
 
 let res = func1(1);
-console.log(res(2));
+console.log(res(2));*/
 //console.log(res2);
+
+function rec() {
+	rec();
+}
+
+rec();
