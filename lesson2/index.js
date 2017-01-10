@@ -62,7 +62,8 @@ function rec(number) {
 }
 
 rec(10);*/
-
+// Если один параметр, то скобки можно опустить, если параметров несколько или их нет, то скобки нужны
+/*
 let sum = (source) => {
 	let result = 0;
 	for (let i = 0; i < source.length; i++) {
@@ -73,4 +74,13 @@ let sum = (source) => {
 
 let array = [1, 2, 3];
 
-console.log(sum(array));
+console.log(sum(array));*/
+
+let array = [2, 3, 4];
+
+let array2 = array.map(number => {
+	return number * number;
+});
+
+console.log(array);
+console.log(array2);
