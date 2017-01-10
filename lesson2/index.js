@@ -78,9 +78,7 @@ console.log(sum(array));*/
 
 let array = [2, 3, 4];
 
-let array2 = array.map(number => {
-	return number * number;
-});
+let array2 = array.map(number => number * number);
 
 console.log(array);
 console.log(array2);
