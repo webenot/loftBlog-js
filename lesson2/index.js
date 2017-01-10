@@ -76,9 +76,23 @@ let array = [1, 2, 3];
 
 console.log(sum(array));*/
 
+/*
 let array = [2, 3, 4];
 
 let array2 = array.map(number => number * number);
 
 console.log(array);
-console.log(array2);
+console.log(array2);*/
+
+function sum() {
+	let f1 = () => {
+		let result = 0;
+		for (let i = 0; i < arguments.length; i++) {
+			result += arguments[i];
+		}
+		return result;
+	};
+	return f1();
+}
+
+console.log(sum(1,2,3,4,5));
