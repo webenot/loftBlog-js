@@ -54,8 +54,10 @@ let res = func1(1);
 console.log(res(2));*/
 //console.log(res2);
 
-function rec() {
-	rec();
+function rec(number) {
+	console.log(number--);
+	if (number >= 0)
+		rec(number);
 }
 
-rec();
+rec(10);
