@@ -78,21 +78,22 @@ console.log('===================DZ 3=========================');
 
 let calculator = function (firstNumber) {
 	try {
+		//console.log(this);
 		//console.log(typeof firstNumber);
 		if (!isNumber(firstNumber) && typeof firstNumber !== 'string' && typeof firstNumber === 'undefined') {
 			throw new Error('Переданный параметр должен быть числом или строкой');
 		}
-		firstNumber *= 1;
 	} catch (e) {
 		console.error(e.message);
 		firstNumber = 0;
+		return this;
 	} finally {
 		this.sum = function () {
 			try {
 				if (arguments.length == 0) {
 					throw new Error('Вы не передали никаких параметров!');
 				}
-				let res = firstNumber;
+				let res = firstNumber * 1;
 				for (let i = 0; i < arguments.length; i++) {
 					res += arguments[i];
 				}
