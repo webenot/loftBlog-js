@@ -3,11 +3,20 @@
  */
 function div(a, b) {
 	if (b == 0) {
-		throw new Error('На ноль делить нельзя');
+		throw new Error('На ноль делить нельзя!');
+	}
+	if (b < 0) {
+		throw new Error('Делитель должен быть положительным числом!');
+
 	}
 	return a / b;
 }
 
-let res = div(10, 0);
-
-console.log(res + 1000);
+try {
+	let res = div(10, -2);
+	console.log(res + 1000);
+} catch (e) {
+	console.error(e.message);
+} finally {
+	console.log('Finally!');
+}
