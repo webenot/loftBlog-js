@@ -13,10 +13,11 @@ function div(a, b) {
 }
 
 try {
-	let res = div(10, -2);
+	let res = div(10, '0');
 	console.log(res + 1000);
 } catch (e) {
 	console.error(e.message);
 } finally {
 	console.log('Finally!');
 }
+console.log('!!!');
