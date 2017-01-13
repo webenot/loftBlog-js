@@ -1,6 +1,7 @@
 let obj1 = {
 	name: 'Сергей',
-	lastName: 'Мелюков'
+	lastName: 'Мелюков',
+	old: 0
 };
 /*
 console.log(obj1.lastName);
@@ -18,8 +19,21 @@ delete obj1.lastName; // можно delete obj1['lastName']
 console.log(obj1);
 */
 
+/*
 for (let prop in obj1) {
 	//console.log(prop);
 	console.log(obj1[prop]);
 	console.log(obj1.prop); // нельзя - будет undefined
+}*/
+
+// неправильно
+/*
+if(!obj1.old) {
+	console.log('Свойства old НЕТ в обьекте');
+}*/
+
+if(obj1.hasOwnProperty('old')) {
+	console.log('Свойство old ЕСТЬ в обьекте');
+} else {
+	console.log('Свойства old НЕТ в обьекте');
 }
