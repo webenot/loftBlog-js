@@ -1,7 +1,7 @@
 let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
-	old: 0
+	old: undefined
 };
 /*
 console.log(obj1.lastName);
