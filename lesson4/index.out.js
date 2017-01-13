@@ -14,7 +14,9 @@ console.log(obj1[1]); // нельзя - будет undefined*/
 console.log(obj1[key]);
 console.log(obj1.key); // нельзя - будет undefined*/
 
-obj1.lastName = '!!!!!!!!!';
+//obj1.lastName = '!!!!!!!!!'; // можно так obj1['lastName'] = '!!!!!!!'
+
+delete obj1.lastName; // можно delete obj1['lastName']
 console.log(obj1);
 
 
