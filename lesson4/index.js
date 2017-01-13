@@ -42,13 +42,18 @@ if(obj1.hasOwnProperty('old')) {
 
 //console.log(Object.keys(obj1)); // метод статический
 
-var keys = Object.keys(obj1);
+/*
+let keys = Object.keys(obj1);
 
-for (var i = 0; i < keys.length; i++) {
+for (let i = 0; i < keys.length; i++) {
 	//console.log(keys[i]);
 	//console.log(obj1[keys[i]]);
-	var key = keys[i];
+	let key = keys[i];
 	console.log(obj1[key]);
-}
+}*/
+
+Object.keys(obj1).forEach(function (key) {
+	return console.log(obj1[key]);
+});
 
 //# sourceMappingURL=index.js.map
