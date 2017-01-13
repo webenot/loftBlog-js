@@ -15,7 +15,15 @@ console.log(obj1.key); // нельзя - будет undefined*/
 
 //obj1.lastName = '!!!!!!!!!'; // можно так obj1['lastName'] = '!!!!!!!'
 
+/*
 delete obj1.lastName; // можно delete obj1['lastName']
 console.log(obj1);
+*/
+
+for (var prop in obj1) {
+	//console.log(prop);
+	console.log(obj1[prop]);
+	console.log(obj1.prop); // нельзя - будет undefined
+}
 
 //# sourceMappingURL=index.js.map
