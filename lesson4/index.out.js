@@ -10,9 +10,12 @@ console.log(obj1.lastName);
 console.log(obj1['lastName']);
 console.log(obj1[1]); // нельзя - будет undefined*/
 
-var key = 'lastName';
+/*let key = 'lastName';
 console.log(obj1[key]);
-console.log(obj1.key); // нельзя - будет undefined
+console.log(obj1.key); // нельзя - будет undefined*/
+
+obj1.lastName = '!!!!!!!!!';
+console.log(obj1);
 
 
 },{}]},{},[1]);
