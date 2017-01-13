@@ -3,8 +3,7 @@
 
 var obj1 = {
 	name: 'Сергей',
-	lastName: 'Мелюков',
-	old: undefined
+	lastName: 'Мелюков'
 };
 /*
 console.log(obj1.lastName);
@@ -34,12 +33,14 @@ for (let prop in obj1) {
 if(!obj1.old) {
 	console.log('Свойства old НЕТ в обьекте');
 }*/
-
-if (obj1.hasOwnProperty('old')) {
+/*
+if(obj1.hasOwnProperty('old')) {
 	console.log('Свойство old ЕСТЬ в обьекте');
 } else {
 	console.log('Свойства old НЕТ в обьекте');
-}
+}*/
+
+console.log(Object.keys(obj1)); // метод статический
 
 
 },{}]},{},[1]);
