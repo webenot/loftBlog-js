@@ -1,6 +1,7 @@
 let obj1 = {
 	name: 'Сергей',
-	lastName: 'Мелюков'
+	lastName: 'Мелюков',
+	old: 1000
 };
 /*
 console.log(obj1.lastName);
@@ -37,4 +38,13 @@ if(obj1.hasOwnProperty('old')) {
 	console.log('Свойства old НЕТ в обьекте');
 }*/
 
-console.log(Object.keys(obj1)); // метод статический
+//console.log(Object.keys(obj1)); // метод статический
+
+let keys = Object.keys(obj1);
+
+for (let i = 0; i < keys.length; i++) {
+	//console.log(keys[i]);
+	//console.log(obj1[keys[i]]);
+	let key = keys[i];
+	console.log(obj1[key]);
+}

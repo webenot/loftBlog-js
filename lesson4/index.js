@@ -2,7 +2,8 @@
 
 var obj1 = {
 	name: 'Сергей',
-	lastName: 'Мелюков'
+	lastName: 'Мелюков',
+	old: 1000
 };
 /*
 console.log(obj1.lastName);
@@ -39,6 +40,15 @@ if(obj1.hasOwnProperty('old')) {
 	console.log('Свойства old НЕТ в обьекте');
 }*/
 
-console.log(Object.keys(obj1)); // метод статический
+//console.log(Object.keys(obj1)); // метод статический
+
+var keys = Object.keys(obj1);
+
+for (var i = 0; i < keys.length; i++) {
+	//console.log(keys[i]);
+	//console.log(obj1[keys[i]]);
+	var key = keys[i];
+	console.log(obj1[key]);
+}
 
 //# sourceMappingURL=index.js.map
