@@ -81,6 +81,7 @@ for (let i = 0; i < keys.length; i++) {
 
 //Object.keys(obj1).forEach(key => console.log(obj1[key]));
 
+/*
 let obj1 = [
 	{
 		name: 'name',
@@ -97,4 +98,41 @@ let obj1 = [
 		writable: true,
 		value: 180
 	}
-];
+];*/
+
+let obj1 = {
+	name: 'Сергей',
+	lastName: 'Мелюков',
+	old: 180
+};
+
+Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
+	//value: '!!!!', // default undefined - нельзя использовать вместе с get
+	enumerable: true, // default false
+	//writable: true, // default false - нельзя использовать вместе с get
+	configurable: true, // default false
+	get () {
+		return `${this.name} ${this.lastName}`;
+	},
+	set (value) {
+		//console.log('Новое значение:', value);
+		let name, lastName;
+		[name, lastName] = value.split(' '); // Babel при преобразовании кода в браузере выдает ошибку
+		this.name = name;
+		this.lastName = lastName;
+	}
+});
+
+console.log(obj1.fullName);
+
+console.log(obj1);
+
+obj1.fullName = 'Иван Иванов';
+
+//console.log(obj1.toString());
+
+for (let prop in obj1) {
+	console.log(obj1[prop]);
+}
+
+console.log(obj1);

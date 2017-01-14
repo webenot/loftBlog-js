@@ -1,5 +1,11 @@
 'use strict';
 
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
@@ -83,18 +89,68 @@ for (let i = 0; i < keys.length; i++) {
 
 //Object.keys(obj1).forEach(key => console.log(obj1[key]));
 
-var obj1 = [{
-	name: 'name',
-	writable: true,
-	value: 'Сергей'
-}, {
-	name: 'lastName',
-	writable: true,
-	value: 'Мелюков'
-}, {
-	name: 'old',
-	writable: true,
-	value: 180
-}];
+/*
+let obj1 = [
+	{
+		name: 'name',
+		writable: true,
+		value: 'Сергей'
+	},
+	{
+		name: 'lastName',
+		writable: true,
+		value: 'Мелюков'
+	},
+	{
+		name: 'old',
+		writable: true,
+		value: 180
+	}
+];*/
+
+var obj1 = {
+	name: 'Сергей',
+	lastName: 'Мелюков',
+	old: 180
+};
+
+Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
+	//value: '!!!!', // default undefined - нельзя использовать вместе с get
+	enumerable: true, // default false
+	//writable: true, // default false - нельзя использовать вместе с get
+	configurable: true, // default false
+	get: function get() {
+		return this.name + ' ' + this.lastName;
+	},
+	set: function set(value) {
+		//console.log('Новое значение:', value);
+		var name = void 0,
+		    lastName = void 0;
+
+		// Babel при преобразовании кода в браузере выдает ошибку
+		var _value$split = value.split(' ');
+
+		var _value$split2 = (0, _slicedToArray3.default)(_value$split, 2);
+
+		name = _value$split2[0];
+		lastName = _value$split2[1];
+		this.name = name;
+		this.lastName = lastName;
+	}
+});
+
+console.log(obj1.fullName);
+
+console.log(obj1);
+
+obj1.fullName = 'Иван Иванов';
+
+//console.log(obj1.toString());
+
+for (var prop in obj1) {
+	console.log(obj1[prop]);
+}
+
+console.log(obj1);
 
 //# sourceMappingURL=index.js.map
