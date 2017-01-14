@@ -1,38 +1,38 @@
 'use strict';
 
-/*let obj1 = {
+var obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
-	valueOf () {
+	valueOf: function valueOf() {
 		return this.old;
 	},
-	toString() {
-		return `[${this.name}] - [${this.lastName}]`;
+	toString: function toString() {
+		return '[' + this.name + '] - [' + this.lastName + ']';
 	}
 };
 
-let obj2 = {
+var obj2 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
-	valueOf () {
+	valueOf: function valueOf() {
 		return this.old;
 	},
-	toString() {
-		return `[${this.name}] - [${this.lastName}]`;
+	toString: function toString() {
+		return '[' + this.name + '] - [' + this.lastName + ']';
 	}
-};*/
+};
 
 /*if (obj1 == obj2) { // не одинаковые, сравниваются адреса, где хранятся обьекты, но если есть метод valueOf, то можно сравнивать по значению, которое возвращает этот метод, кроме сравнения ==
 	console.log('Обьекты одинаковые!');
 }*/
 
-/*console.log(obj1 == obj2);
+console.log(obj1 == obj2);
 console.log(obj1 >= obj2);
 console.log(obj1 <= obj2);
 console.log(obj1 > obj2);
-console.log(obj1 < obj2);*/
+console.log(obj1 < obj2);
 
 /*
 console.log(obj1.lastName);
@@ -139,7 +139,12 @@ for (let prop in obj1) {
 */
 //console.log(obj1);
 
-var array = ['Сергей', 'Мелюков', 180];
+/*
+let array = [
+	'Сергей',
+	'Мелюков',
+	180
+];
 
 console.log(array);
 
@@ -149,15 +154,15 @@ array[array.length] = '!!!!';
 
 console.log(array);
 
-/*
+/!*
 delete array[3]; // неправильное удаление
 
-console.log(array);*/
+console.log(array);*!/
 
 //array.splice(3, 2);
 //array.splice(3, 0, 1,2,3,4,5);
 //array.splice(-1, 0, 1,2,3,4);
 array.splice(3, 1, 1000);
-console.log(array);
+console.log(array);*/
 
 //# sourceMappingURL=index.js.map
