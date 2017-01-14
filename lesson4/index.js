@@ -144,6 +144,7 @@ var array = ['Сергей', 'Мелюков', 180];
 console.log(array);
 
 array.push('!!!');
+array.push(100, 200, 300);
 array[array.length] = '!!!!';
 
 console.log(array);
