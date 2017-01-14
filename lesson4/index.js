@@ -1,11 +1,5 @@
 'use strict';
 
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
-
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
@@ -108,32 +102,24 @@ let obj1 = [
 	}
 ];*/
 
-var obj1 = {
+/*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180
-};
+};*/
 
-Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
+/*Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
 	//value: '!!!!', // default undefined - нельзя использовать вместе с get
 	enumerable: true, // default false
 	//writable: true, // default false - нельзя использовать вместе с get
 	configurable: true, // default false
-	get: function get() {
-		return this.name + ' ' + this.lastName;
+	get () {
+		return `${this.name} ${this.lastName}`;
 	},
-	set: function set(value) {
+	set (value) {
 		//console.log('Новое значение:', value);
-		var name = void 0,
-		    lastName = void 0;
-
-		// Babel при преобразовании кода в браузере выдает ошибку
-		var _value$split = value.split(' ');
-
-		var _value$split2 = (0, _slicedToArray3.default)(_value$split, 2);
-
-		name = _value$split2[0];
-		lastName = _value$split2[1];
+		let name, lastName;
+		[name, lastName] = value.split(' '); // Babel при преобразовании кода в браузере выдает ошибку
 		this.name = name;
 		this.lastName = lastName;
 	}
@@ -147,10 +133,30 @@ obj1.fullName = 'Иван Иванов';
 
 //console.log(obj1.toString());
 
-for (var prop in obj1) {
+for (let prop in obj1) {
 	console.log(obj1[prop]);
 }
+*/
+//console.log(obj1);
 
-console.log(obj1);
+var array = ['Сергей', 'Мелюков', 180];
+
+console.log(array);
+
+array.push('!!!');
+array[array.length] = '!!!!';
+
+console.log(array);
+
+/*
+delete array[3]; // неправильное удаление
+
+console.log(array);*/
+
+//array.splice(3, 2);
+//array.splice(3, 0, 1,2,3,4,5);
+//array.splice(-1, 0, 1,2,3,4);
+array.splice(3, 1, 1000);
+console.log(array);
 
 //# sourceMappingURL=index.js.map

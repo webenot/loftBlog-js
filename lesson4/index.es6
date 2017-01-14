@@ -149,3 +149,14 @@ array.push('!!!');
 array[array.length] = '!!!!';
 
 console.log(array);
+
+/*
+delete array[3]; // неправильное удаление
+
+console.log(array);*/
+
+//array.splice(3, 2);
+//array.splice(3, 0, 1,2,3,4,5);
+//array.splice(-1, 0, 1,2,3,4);
+array.splice(3, 1, 1000);
+console.log(array);
