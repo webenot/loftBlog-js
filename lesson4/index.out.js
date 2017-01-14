@@ -1,39 +1,39 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var obj1 = {
+/*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
-	valueOf: function valueOf() {
+	valueOf () {
 		return this.old;
 	},
-	toString: function toString() {
-		return '[' + this.name + '] - [' + this.lastName + ']';
+	toString() {
+		return `[${this.name}] - [${this.lastName}]`;
 	}
 };
 
-var obj2 = {
+let obj2 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
-	valueOf: function valueOf() {
+	valueOf () {
 		return this.old;
 	},
-	toString: function toString() {
-		return '[' + this.name + '] - [' + this.lastName + ']';
+	toString() {
+		return `[${this.name}] - [${this.lastName}]`;
 	}
-};
+};*/
 
 /*if (obj1 == obj2) { // не одинаковые, сравниваются адреса, где хранятся обьекты, но если есть метод valueOf, то можно сравнивать по значению, которое возвращает этот метод, кроме сравнения ==
 	console.log('Обьекты одинаковые!');
 }*/
 
-console.log(obj1 == obj2);
+/*console.log(obj1 == obj2);
 console.log(obj1 >= obj2);
 console.log(obj1 <= obj2);
 console.log(obj1 > obj2);
-console.log(obj1 < obj2);
+console.log(obj1 < obj2);*/
 
 /*
 console.log(obj1.lastName);
@@ -83,6 +83,20 @@ for (let i = 0; i < keys.length; i++) {
 }*/
 
 //Object.keys(obj1).forEach(key => console.log(obj1[key]));
+
+var obj1 = [{
+	name: 'name',
+	writable: true,
+	value: 'Сергей'
+}, {
+	name: 'lastName',
+	writable: true,
+	value: 'Мелюков'
+}, {
+	name: 'old',
+	writable: true,
+	value: 180
+}];
 
 
 },{}]},{},[1]);

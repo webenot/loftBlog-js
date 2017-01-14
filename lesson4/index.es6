@@ -1,4 +1,4 @@
-let obj1 = {
+/*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
@@ -20,17 +20,17 @@ let obj2 = {
 	toString() {
 		return `[${this.name}] - [${this.lastName}]`;
 	}
-};
+};*/
 
 /*if (obj1 == obj2) { // не одинаковые, сравниваются адреса, где хранятся обьекты, но если есть метод valueOf, то можно сравнивать по значению, которое возвращает этот метод, кроме сравнения ==
 	console.log('Обьекты одинаковые!');
 }*/
 
-console.log(obj1 == obj2);
+/*console.log(obj1 == obj2);
 console.log(obj1 >= obj2);
 console.log(obj1 <= obj2);
 console.log(obj1 > obj2);
-console.log(obj1 < obj2);
+console.log(obj1 < obj2);*/
 
 /*
 console.log(obj1.lastName);
@@ -80,3 +80,21 @@ for (let i = 0; i < keys.length; i++) {
 }*/
 
 //Object.keys(obj1).forEach(key => console.log(obj1[key]));
+
+let obj1 = [
+	{
+		name: 'name',
+		writable: true,
+		value: 'Сергей'
+	},
+	{
+		name: 'lastName',
+		writable: true,
+		value: 'Мелюков'
+	},
+	{
+		name: 'old',
+		writable: true,
+		value: 180
+	}
+];
