@@ -100,13 +100,13 @@ let obj1 = [
 	}
 ];*/
 
-let obj1 = {
+/*let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180
-};
+};*/
 
-Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
+/*Object.defineProperty(obj1, 'fullName', { // Это дескриптор свойства fullName
 	//value: '!!!!', // default undefined - нельзя использовать вместе с get
 	enumerable: true, // default false
 	//writable: true, // default false - нельзя использовать вместе с get
@@ -134,5 +134,18 @@ obj1.fullName = 'Иван Иванов';
 for (let prop in obj1) {
 	console.log(obj1[prop]);
 }
+*/
+//console.log(obj1);
 
-console.log(obj1);
+let array = [
+	'Сергей',
+	'Мелюков',
+	180
+];
+
+console.log(array);
+
+array.push('!!!');
+array[array.length] = '!!!!';
+
+console.log(array);
