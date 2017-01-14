@@ -1,4 +1,4 @@
-/*let obj1 = {
+let obj1 = {
 	name: 'Сергей',
 	lastName: 'Мелюков',
 	old: 180,
@@ -20,17 +20,17 @@ let obj2 = {
 	toString() {
 		return `[${this.name}] - [${this.lastName}]`;
 	}
-};*/
+};
 
 /*if (obj1 == obj2) { // не одинаковые, сравниваются адреса, где хранятся обьекты, но если есть метод valueOf, то можно сравнивать по значению, которое возвращает этот метод, кроме сравнения ==
 	console.log('Обьекты одинаковые!');
 }*/
 
-/*console.log(obj1 == obj2);
+console.log(obj1 == obj2);
 console.log(obj1 >= obj2);
 console.log(obj1 <= obj2);
 console.log(obj1 > obj2);
-console.log(obj1 < obj2);*/
+console.log(obj1 < obj2);
 
 /*
 console.log(obj1.lastName);
@@ -137,6 +137,7 @@ for (let prop in obj1) {
 */
 //console.log(obj1);
 
+/*
 let array = [
 	'Сергей',
 	'Мелюков',
@@ -151,13 +152,13 @@ array[array.length] = '!!!!';
 
 console.log(array);
 
-/*
+/!*
 delete array[3]; // неправильное удаление
 
-console.log(array);*/
+console.log(array);*!/
 
 //array.splice(3, 2);
 //array.splice(3, 0, 1,2,3,4,5);
 //array.splice(-1, 0, 1,2,3,4);
 array.splice(3, 1, 1000);
-console.log(array);
+console.log(array);*/
