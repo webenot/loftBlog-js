@@ -1,7 +1,5 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 /**
  * Created by aquilla on 12.01.2017.
  */
@@ -9,7 +7,7 @@ var calculator = function calculator(firstNumber) {
 	try {
 		//console.log(this);
 		//console.log(typeof firstNumber);
-		if (!(typeof firstNumber === 'undefined' ? 'undefined' : _typeof(firstNumber)) === 'number' && typeof firstNumber !== 'string' && typeof firstNumber === 'undefined') {
+		if (typeof firstNumber !== 'number' && typeof firstNumber !== 'string' && typeof firstNumber === 'undefined') {
 			throw new Error('Переданный параметр должен быть числом или строкой');
 		}
 	} catch (e) {

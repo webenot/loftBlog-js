@@ -5,7 +5,7 @@ let calculator = function (firstNumber) {
 	try {
 		//console.log(this);
 		//console.log(typeof firstNumber);
-		if (!typeof firstNumber === 'number' && typeof firstNumber !== 'string' && typeof firstNumber === 'undefined') {
+		if (typeof firstNumber !== 'number' && typeof firstNumber !== 'string' && typeof firstNumber === 'undefined') {
 			throw new Error('Переданный параметр должен быть числом или строкой');
 		}
 	} catch (e) {
