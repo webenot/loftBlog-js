@@ -3,6 +3,7 @@ let filter = require('./filter');
 let map = require('./map');
 let slice = require('./slice');
 let reduce = require('./reduce');
+let splice = require('./splice');
 
 let array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
@@ -14,6 +15,8 @@ let sqare = map(array, item => item*item);
 //console.log(sqare);
 
 //console.log(slice(array, 3, 5));
+
+console.log(splice(array, 3, 2, 1, 1, 1));
 
 /*console.log(reduce(array, function(a, b) {
 	return a + b;
@@ -55,7 +58,7 @@ var allbooks = reduce(friends,function(prev, curr) {
 
 console.log(allbooks);*/
 
-var maxCallback = ( pre, cur ) => Math.max( pre.x, cur.x );
+/*var maxCallback = ( pre, cur ) => Math.max( pre.x, cur.x );
 var maxCallback2 = ( max, cur ) => Math.max( max, cur );
 
 // reduce() without initialValue
@@ -64,4 +67,4 @@ console.log(reduce([ { x: 22 }            ], maxCallback )); // { x: 22 }
 console.log(reduce( [                      ], maxCallback )); // TypeError
 
 // map/reduce; better solution, also works for empty arrays
-console.log(reduce([ { x: 22 }, { x: 42 } ].map( el => el.x ), maxCallback2, -Infinity ));
+console.log(reduce([ { x: 22 }, { x: 42 } ].map( el => el.x ), maxCallback2, -Infinity ));*/
