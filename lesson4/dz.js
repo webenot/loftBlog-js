@@ -6,6 +6,7 @@ var map = require('./map');
 var slice = require('./slice');
 var reduce = require('./reduce');
 var splice = require('./splice');
+var deepEqual = require('./deepEqual');
 
 var array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
@@ -22,7 +23,7 @@ var sqare = map(array, function (item) {
 
 //console.log(slice(array, 3, 5));
 
-console.log(splice(array, 3, 2, 1, 1, 1));
+//console.log(splice(array, 3, 2, 1, 1, 1));
 
 /*console.log(reduce(array, function(a, b) {
 	return a + b;
@@ -74,5 +75,41 @@ console.log(reduce( [                      ], maxCallback )); // TypeError
 
 // map/reduce; better solution, also works for empty arrays
 console.log(reduce([ { x: 22 }, { x: 42 } ].map( el => el.x ), maxCallback2, -Infinity ));*/
+
+var objA = {
+	prop1: 'value1',
+	prop2: 'value2',
+	prop3: 'value3',
+	prop4: {
+		subProp1: 'sub value1',
+		subProp2: {
+			subSubProp1: 'sub sub value1',
+			subSubProp2: [1, 2, { prop2: 1, prop: 2 }, 4, 5]
+		}
+	},
+	prop5: 1000,
+	prop6: new Date(2016, 2, 10)
+};
+
+var objB = {
+	prop5: 1000,
+	prop3: 'value3',
+	prop1: 'value1',
+	prop2: 'value2',
+	prop6: new Date('2016/03/10'),
+	prop4: {
+		subProp2: {
+			subSubProp1: 'sub sub value1',
+			subSubProp2: [1, 2, { prop2: 1, prop: 2 }, 4, 5]
+		},
+		subProp1: 'sub value1'
+	}
+};
+
+var arr1 = [1, 2, 3, 4],
+    arr2 = [2, 1, 3, 4];
+
+console.log(deepEqual(objA, objB));
+console.log(deepEqual(arr1, arr2));
 
 //# sourceMappingURL=dz.js.map
