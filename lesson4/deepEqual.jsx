@@ -1,68 +1,52 @@
 let deepEqual = function (obj1, obj2) {
 	if (arguments.length === 0) {
-		throw new Error('Вы не передали никаких аргументов');
+		throw new Error('Вы не передали никаких аргументов функции deepEqual');
 	}
-	if (typeof obj1 !== 'undefined' && typeof obj1 !== 'object') {
-		throw new Error('Первый параметр функции deepEqual должен быть объектом');
-	}
-	if (typeof obj2 !== 'undefined' && typeof obj2 !== 'object') {
-		throw new Error('Второй параметр функции deepEqual должен быть объектом');
-	}
-
-	let equality = true;
-
 	if (obj1 === obj2)
 		return true;
 
-	if (obj1.length !== obj1.length) {
+	if (typeof obj2 !== 'object' && typeof obj1 !== 'object') {
 		return false;
 	}
+
+	if (obj2.length !==  obj1.length) {
+		return false;
+	}
+
+	let equality = true;
 
 	for(let arg1 in obj1) {
 		if (obj2[arg1] !== undefined) {
 			if (obj2[arg1] === obj1[arg1]) {
 				equality = equality && true;
 			} else {
-				if (typeof obj2[arg1] === 'object' && typeof obj1[arg1] === 'object') {
-					if (obj2[arg1].length !==  obj1[arg1].length) {
-						equality = equality && false;
+				if (typeof obj2 !== 'object' && typeof obj1 !== 'object') {
+					return false;
+				}
+				if (obj2[arg1].length !==  obj1[arg1].length) {
+					return false;
+				}
+				if (obj2[arg1] instanceof Date && obj1[arg1] instanceof Date) {
+					if (obj2[arg1].valueOf() === obj1[arg1].valueOf()) {
+						equality = equality && true;
 					} else {
-						try {
-							if(obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
-								equality = equality && true;
-							} else {
-								equality = equality && false;
-							}
-						} catch (e) {
-							try {
-								obj2[arg1].forEach(function (item, i, arr) {});
-								obj1[arg1].forEach(function (item, i, arr) {});
-								for(let i = 0; i < obj1[arg1].length; i++) {
-									if (obj1[arg1][i] === obj2[arg1][i]) {
-										equality = equality && true;
-									} else {
-										if (typeof obj2[arg1][i] === 'object' && typeof obj1[arg1][i] === 'object') {
-											if (obj2[arg1].length !==  obj1[arg1].length) {
-												equality = equality && false;
-											} else {
-												equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
-											}
-										} else {
-											equality = equality && false;
-										}
-									}
-								}
-							} catch (e) {
-								equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
-							}
-						}
+						return false;
 					}
 				} else {
-					equality = equality && false;
+					if (obj2[arg1] instanceof Array && obj1[arg1] instanceof Array) {
+						if (obj2[arg1].length !==  obj1[arg1].length) {
+							return false;
+						}
+						for (let i = 0; i < obj2[arg1].length; i++) {
+							equality = deepEqual(obj2[arg1][i], obj1[arg1][i]) && equality;
+						}
+					} else {
+						equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
+					}
 				}
 			}
 		} else {
-			equality = equality && false;
+			return false;
 		}
 	}
 

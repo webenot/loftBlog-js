@@ -9,68 +9,52 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var deepEqual = function deepEqual(obj1, obj2) {
 	if (arguments.length === 0) {
-		throw new Error('Вы не передали никаких аргументов');
+		throw new Error('Вы не передали никаких аргументов функции deepEqual');
 	}
-	if (typeof obj1 !== 'undefined' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
-		throw new Error('Первый параметр функции deepEqual должен быть объектом');
+	if (obj1 === obj2) return true;
+
+	if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
+		return false;
 	}
-	if (typeof obj2 !== 'undefined' && (typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object') {
-		throw new Error('Второй параметр функции deepEqual должен быть объектом');
+
+	if (obj2.length !== obj1.length) {
+		return false;
 	}
 
 	var equality = true;
-
-	if (obj1 === obj2) return true;
-
-	if (obj1.length !== obj1.length) {
-		return false;
-	}
 
 	for (var arg1 in obj1) {
 		if (obj2[arg1] !== undefined) {
 			if (obj2[arg1] === obj1[arg1]) {
 				equality = equality && true;
 			} else {
-				if ((0, _typeof3.default)(obj2[arg1]) === 'object' && (0, _typeof3.default)(obj1[arg1]) === 'object') {
-					if (obj2[arg1].length !== obj1[arg1].length) {
-						equality = equality && false;
+				if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
+					return false;
+				}
+				if (obj2[arg1].length !== obj1[arg1].length) {
+					return false;
+				}
+				if (obj2[arg1] instanceof Date && obj1[arg1] instanceof Date) {
+					if (obj2[arg1].valueOf() === obj1[arg1].valueOf()) {
+						equality = equality && true;
 					} else {
-						try {
-							if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
-								equality = equality && true;
-							} else {
-								equality = equality && false;
-							}
-						} catch (e) {
-							try {
-								obj2[arg1].forEach(function (item, i, arr) {});
-								obj1[arg1].forEach(function (item, i, arr) {});
-								for (var i = 0; i < obj1[arg1].length; i++) {
-									if (obj1[arg1][i] === obj2[arg1][i]) {
-										equality = equality && true;
-									} else {
-										if ((0, _typeof3.default)(obj2[arg1][i]) === 'object' && (0, _typeof3.default)(obj1[arg1][i]) === 'object') {
-											if (obj2[arg1].length !== obj1[arg1].length) {
-												equality = equality && false;
-											} else {
-												equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
-											}
-										} else {
-											equality = equality && false;
-										}
-									}
-								}
-							} catch (e) {
-								equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
-							}
-						}
+						return false;
 					}
 				} else {
-					equality = equality && false;
+					if (obj2[arg1] instanceof Array && obj1[arg1] instanceof Array) {
+						if (obj2[arg1].length !== obj1[arg1].length) {
+							return false;
+						}
+						for (var i = 0; i < obj2[arg1].length; i++) {
+							equality = deepEqual(obj2[arg1][i], obj1[arg1][i]) && equality;
+						}
+					} else {
+						equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
+					}
 				}
 			}
 		} else {
-			equality = equality && false;
+			return false;
 		}
 	}
 
@@ -94,14 +78,10 @@ var deepEqual = require('./deepEqual');
 var array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
 
-var greaterThan4 = filter(array, function (item) {
-	return item > 4;
-});
+//let greaterThan4 = filter(array, item => item > 4);
 //console.log(greaterThan4);
 
-var sqare = map(array, function (item) {
-	return item * item;
-});
+//let sqare = map(array, item => item*item);
 //console.log(sqare);
 
 //console.log(slice(array, 3, 5));
@@ -193,33 +173,37 @@ var arr1 = [1, 2, 3, 4],
     arr2 = [2, 1, 3, 4];
 
 console.time();
-//console.log(deepEqual(objA, objB));
+console.log(deepEqual(objA, objB));
 console.log(deepEqual(arr1, arr2));
+//console.log(typeof a);
 console.timeEnd();
-//console.log(deepEqual(arr1, arr2));
 
 
 },{"./deepEqual":1,"./filter":3,"./forEach":4,"./map":5,"./reduce":6,"./slice":7,"./splice":8}],3:[function(require,module,exports){
 'use strict';
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+var _arguments = arguments;
 var filter = function filter(source, fn) {
-	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+	if (_arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for (var i = 0; i < 2; i++) {
+		if (typeof _arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции filter не определен');
+		}
+	}
+	if (!(source instanceof Array)) {
 		throw new Error('Первый параметр функции filter должен быть массивом');
 	}
 	if (typeof fn !== 'function') {
-		throw new Error('Второй параметр функции forEach должен быть функцией');
+		throw new Error('Второй параметр функции filter должен быть функцией');
 	}
 	var out = [],
 	    j = 0;
-	for (var i = 0; i < source.length; i++) {
-		if (fn(source[i])) {
-			out[j] = source[i];
+	for (var _i = 0; _i < source.length; _i++) {
+		if (fn(source[_i])) {
+			out[j] = source[_i];
 			j++;
 		}
 	}
@@ -229,24 +213,28 @@ var filter = function filter(source, fn) {
 module.exports = filter;
 
 
-},{"babel-runtime/helpers/typeof":11}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+var _arguments = arguments;
 var forEach = function forEach(source, fn) {
-	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+	if (_arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for (var i = 0; i < 2; i++) {
+		if (typeof _arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции forEach не определен');
+		}
+	}
+	if (!(source instanceof Array)) {
 		throw new Error('Первый параметр функции forEach должен быть массивом');
 	}
 	if (typeof fn !== 'function') {
 		throw new Error('Второй параметр функции forEach должен быть функцией');
 	}
-	for (var i = 0; i < source.length; i++) {
-		fn(source[i]);
+	for (var _i = 0; _i < source.length; _i++) {
+		fn(source[_i]);
 	}
 	return 1;
 };
@@ -254,25 +242,29 @@ var forEach = function forEach(source, fn) {
 module.exports = forEach;
 
 
-},{"babel-runtime/helpers/typeof":11}],5:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+var _arguments = arguments;
 var map = function map(source, fn) {
-	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+	if (_arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for (var i = 0; i < 2; i++) {
+		if (typeof _arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции map не определен');
+		}
+	}
+	if (!(source instanceof Array)) {
 		throw new Error('Первый параметр функции map должен быть массивом');
 	}
 	if (typeof fn !== 'function') {
-		throw new Error('Второй параметр функции forEach должен быть функцией');
+		throw new Error('Второй параметр функции map должен быть функцией');
 	}
 	var out = [];
-	for (var i = 0; i < source.length; i++) {
-		out[i] = fn(source[i]);
+	for (var _i = 0; _i < source.length; _i++) {
+		out[_i] = fn(source[_i]);
 	}
 	return out;
 };
@@ -280,16 +272,23 @@ var map = function map(source, fn) {
 module.exports = map;
 
 
-},{"babel-runtime/helpers/typeof":11}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var reduce = function reduce(source, fn, initialValue) {
-	if (typeof source === 'undefined') {
-		throw new Error('Не передано первый параметр');
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for (var i = 0; i < 2; i++) {
+		if (typeof arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции reduce не определен');
+		}
 	}
 	if (typeof fn !== 'function') {
 		throw new Error('Второй параметр функции reduce должен быть функцией');
 	}
+
 	var object = Object(source);
 	var result = void 0,
 	    key = 0,
@@ -322,32 +321,29 @@ module.exports = reduce;
 },{}],7:[function(require,module,exports){
 'use strict';
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var slice = function slice() {
 	if (arguments.length === 0) {
 		throw new Error('Вы не передали никаких аргументов');
 	}
-	if ((0, _typeof3.default)(arguments[0]) !== 'object') {
+	for (var i = 0; i < 2; i++) {
+		if (typeof arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции slice не определен');
+		}
+	}
+	if (!(arguments[0] instanceof Array)) {
 		throw new Error('Первый параметр функции slice должен быть массивом');
 	}
-	for (var i = 1; i < arguments.length; i++) {
-		if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
-			var n = (i + 1) * 1;
-			throw new Error(n + 'й параметр функции splice должен быть числом');
-		}
+	if (typeof arguments[1] !== 'number') {
+		throw new Error('Второй параметр функции slice должен быть числом');
 	}
 	var out = [],
 	    j = 0,
 	    array = arguments[0];
-	var begin = arguments[1] !== undefined ? arguments[1] < 0 ? array.length + 1 * arguments[1] : arguments[1] - 1 : 0;
-	//console.log(begin);
+	var begin = arguments[1] < 0 ? array.length + 1 * arguments[1] : arguments[1] - 1;
+
 	var end = arguments[2] !== undefined ? arguments[2] - 1 : array.length - 1;
-	//console.log(end);
+
 	for (var _i = begin; _i < end; _i++) {
 		out[j] = array[_i];
 		j++;
@@ -359,31 +355,29 @@ var slice = function slice() {
 module.exports = slice;
 
 
-},{"babel-runtime/helpers/typeof":11}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
-
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var splice = function splice() {
 	if (arguments.length === 0) {
 		throw new Error('Вы не передали никаких аргументов');
 	}
-	if ((0, _typeof3.default)(arguments[0]) !== 'object') {
-		throw new Error('Первый параметр функции splice должен быть массивом');
-	}
-	for (var i = 1; i < arguments.length; i++) {
-		if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
+	for (var i = 0; i < 2; i++) {
+		if (typeof arguments[i] !== 'undefined') {
 			var n = (i + 1) * 1;
-			throw new Error(n + 'й параметр функции splice должен быть числом');
+			throw new Error(n + 'й аргумент функции slice не определен');
 		}
 	}
+	if (!(arguments[0] instanceof Array)) {
+		throw new Error('Первый параметр функции splice должен быть массивом');
+	}
+	if (typeof arguments[1] !== 'number') {
+		throw new Error('Второй параметр функции slice должен быть числом');
+	}
+
 	var out = [],
 	    array = arguments[0];
-	var begin = arguments[1] !== undefined ? arguments[1] : null;
+	var begin = arguments[1];
 	var end = arguments[2] !== undefined ? arguments[2] : array.length;
 
 	var arr = [];
@@ -415,7 +409,7 @@ var splice = function splice() {
 module.exports = splice;
 
 
-},{"babel-runtime/helpers/typeof":11}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/symbol"), __esModule: true };
 },{"core-js/library/fn/symbol":12}],10:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/symbol/iterator"), __esModule: true };

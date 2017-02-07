@@ -1,10 +1,17 @@
 let reduce = function (source, fn, initialValue) {
-	if (typeof source === 'undefined') {
-		throw new Error('Не передано первый параметр');
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for(let i = 0; i < 2; i++) {
+		if (typeof arguments[i] !== 'undefined') {
+			let n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции reduce не определен');
+		}
 	}
 	if (typeof fn !== 'function') {
 		throw new Error('Второй параметр функции reduce должен быть функцией');
 	}
+
 	let object = Object(source);
 	let result, key = 0,
 		length = object.length;

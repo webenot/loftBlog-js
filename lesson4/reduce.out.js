@@ -2,12 +2,19 @@
 'use strict';
 
 var reduce = function reduce(source, fn, initialValue) {
-	if (typeof source === 'undefined') {
-		throw new Error('Не передано первый параметр');
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	for (var i = 0; i < 2; i++) {
+		if (typeof arguments[i] !== 'undefined') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й аргумент функции reduce не определен');
+		}
 	}
 	if (typeof fn !== 'function') {
 		throw new Error('Второй параметр функции reduce должен быть функцией');
 	}
+
 	var object = Object(source);
 	var result = void 0,
 	    key = 0,

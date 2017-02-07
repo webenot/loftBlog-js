@@ -11,14 +11,10 @@ var deepEqual = require('./deepEqual');
 var array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
 
-var greaterThan4 = filter(array, function (item) {
-	return item > 4;
-});
+//let greaterThan4 = filter(array, item => item > 4);
 //console.log(greaterThan4);
 
-var sqare = map(array, function (item) {
-	return item * item;
-});
+//let sqare = map(array, item => item*item);
 //console.log(sqare);
 
 //console.log(slice(array, 3, 5));
@@ -110,9 +106,9 @@ var arr1 = [1, 2, 3, 4],
     arr2 = [2, 1, 3, 4];
 
 console.time();
-//console.log(deepEqual(objA, objB));
+console.log(deepEqual(objA, objB));
 console.log(deepEqual(arr1, arr2));
+//console.log(typeof a);
 console.timeEnd();
-//console.log(deepEqual(arr1, arr2));
 
 //# sourceMappingURL=dz.js.map
