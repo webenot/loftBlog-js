@@ -1,5 +1,11 @@
 'use strict';
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //let forEach = require('./forEach');
 //let filter = require('./filter');
 //let map = require('./map');
@@ -108,6 +114,7 @@ var arr1 = [1, 2, 3, 4],
 console.time();
 console.log(deepEqual(objA, objB));
 console.log(deepEqual(arr1, arr2));
+console.log((0, _keys2.default)(objA).length);
 //console.log(typeof a);
 console.timeEnd();
 

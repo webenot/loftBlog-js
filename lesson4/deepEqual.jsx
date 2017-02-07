@@ -5,22 +5,22 @@ let deepEqual = function (obj1, obj2) {
 	if (obj1 === obj2)
 		return true;
 
-	if (typeof obj2 !== 'object' && typeof obj1 !== 'object') {
+	if (typeof obj2 !== 'object' || typeof obj1 !== 'object') {
 		return false;
 	}
 
-	if (obj2.length !==  obj1.length) {
+	if (Object.keys(obj2).length !==  Object.keys(obj1).length) {
 		return false;
 	}
 
 	let equality = true;
 
 	for(let arg1 in obj1) {
-		if (obj2[arg1] !== undefined) {
+		if (obj2.hasOwnProperty(arg1)) {
 			if (obj2[arg1] === obj1[arg1]) {
 				equality = equality && true;
 			} else {
-				if (typeof obj2 !== 'object' && typeof obj1 !== 'object') {
+				if (typeof obj2 !== 'object' || typeof obj1 !== 'object') {
 					return false;
 				}
 				if (obj2[arg1].length !==  obj1[arg1].length) {

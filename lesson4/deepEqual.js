@@ -1,5 +1,9 @@
 'use strict';
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _typeof2 = require('babel-runtime/helpers/typeof');
 
 var _typeof3 = _interopRequireDefault(_typeof2);
@@ -12,22 +16,22 @@ var deepEqual = function deepEqual(obj1, obj2) {
 	}
 	if (obj1 === obj2) return true;
 
-	if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
+	if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' || (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
 		return false;
 	}
 
-	if (obj2.length !== obj1.length) {
+	if ((0, _keys2.default)(obj2).length !== (0, _keys2.default)(obj1).length) {
 		return false;
 	}
 
 	var equality = true;
 
 	for (var arg1 in obj1) {
-		if (obj2[arg1] !== undefined) {
+		if (obj2.hasOwnProperty(arg1)) {
 			if (obj2[arg1] === obj1[arg1]) {
 				equality = equality && true;
 			} else {
-				if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
+				if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' || (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
 					return false;
 				}
 				if (obj2[arg1].length !== obj1[arg1].length) {
