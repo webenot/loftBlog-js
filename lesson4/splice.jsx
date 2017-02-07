@@ -13,8 +13,8 @@ function splice(source, start, length) {
 	}
 
 	let out = [], array = arguments[0];
-	let begin = isNaN(parseInt(arguments[1])) ? 0 : parseInt(arguments[1]);
-	let end = typeof arguments[2] !== 'undefined' || !isNaN(parseInt(arguments[2])) ? parseInt(arguments[2]) : array.length;
+	let begin = isNaN(parseInt(arguments[1], 10)) ? 0 : parseInt(arguments[1], 10);
+	let end = typeof arguments[2] !== 'undefined' || !isNaN(parseInt(arguments[2], 10)) ? parseInt(arguments[2], 10) : array.length;
 
 	let arr = [];
 	for (let i = 3, k = 0; i < arguments.length; i++, k++) {

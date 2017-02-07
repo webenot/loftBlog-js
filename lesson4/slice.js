@@ -10,16 +10,16 @@ var slice = function slice() {
 	if (!(arguments[0] instanceof Array)) {
 		throw new Error('Первый параметр функции slice должен быть массивом');
 	}
-	if (isNaN(parseInt(arguments[1]))) {
+	if (isNaN(parseInt(arguments[1], 10))) {
 		return arguments[0];
 	}
 
 	var out = [],
 	    j = 0,
 	    array = arguments[0];
-	var begin = parseInt(arguments[1]) < 0 ? array.length + parseInt(arguments[1]) : parseInt(arguments[1]);
+	var begin = parseInt(arguments[1], 10) < 0 ? array.length + parseInt(arguments[1], 10) : parseInt(arguments[1], 10);
 
-	var end = typeof arguments[2] !== 'undefined' ? parseInt(arguments[2]) : array.length - 1;
+	var end = typeof arguments[2] !== 'undefined' ? parseInt(arguments[2], 10) : array.length - 1;
 
 	for (var i = begin; i < end; i++) {
 		out[j] = array[i];

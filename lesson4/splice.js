@@ -16,8 +16,8 @@ function splice(source, start, length) {
 
 	var out = [],
 	    array = arguments[0];
-	var begin = isNaN(parseInt(arguments[1])) ? 0 : parseInt(arguments[1]);
-	var end = typeof arguments[2] !== 'undefined' || !isNaN(parseInt(arguments[2])) ? parseInt(arguments[2]) : array.length;
+	var begin = isNaN(parseInt(arguments[1], 10)) ? 0 : parseInt(arguments[1], 10);
+	var end = typeof arguments[2] !== 'undefined' || !isNaN(parseInt(arguments[2], 10)) ? parseInt(arguments[2], 10) : array.length;
 
 	var arr = [];
 	for (var _i = 3, k = 0; _i < arguments.length; _i++, k++) {
