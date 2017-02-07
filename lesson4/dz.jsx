@@ -1,12 +1,12 @@
-let forEach = require('./forEach');
-let filter = require('./filter');
-let map = require('./map');
-let slice = require('./slice');
-let reduce = require('./reduce');
-let splice = require('./splice');
+//let forEach = require('./forEach');
+//let filter = require('./filter');
+//let map = require('./map');
+//let slice = require('./slice');
+//let reduce = require('./reduce');
+//let splice = require('./splice');
 let deepEqual = require('./deepEqual');
 
-let array = [1, 2, 3, 4, 5, 6];
+//let array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
 
 //let greaterThan4 = filter(array, item => item > 4);
@@ -70,7 +70,7 @@ console.log(reduce( [                      ], maxCallback )); // TypeError
 // map/reduce; better solution, also works for empty arrays
 console.log(reduce([ { x: 22 }, { x: 42 } ].map( el => el.x ), maxCallback2, -Infinity ));*/
 
-var objA = {
+let objA = {
 	prop1: 'value1',
 	prop2: 'value2',
 	prop3: 'value3',
@@ -85,7 +85,7 @@ var objA = {
 	prop6: new Date(2016, 2, 10)
 };
 
-var objB = {
+let objB = {
 	prop5: 1000,
 	prop3: 'value3',
 	prop1: 'value1',
