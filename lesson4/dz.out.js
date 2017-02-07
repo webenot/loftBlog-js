@@ -35,9 +35,6 @@ var deepEqual = function deepEqual(obj1, obj2) {
 				if ((typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object' || (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
 					return false;
 				}
-				if (obj2[arg1].length !== obj1[arg1].length) {
-					return false;
-				}
 				if (obj2[arg1] instanceof Date && obj1[arg1] instanceof Date) {
 					if (obj2[arg1].valueOf() === obj1[arg1].valueOf()) {
 						equality = equality && true;
@@ -185,7 +182,7 @@ var arr1 = [1, 2, 3, 4],
 console.time();
 console.log(deepEqual(objA, objB));
 console.log(deepEqual(arr1, arr2));
-console.log((0, _keys2.default)(objA).length);
+console.log((0, _keys2.default)(arr1).length);
 //console.log(typeof a);
 console.timeEnd();
 

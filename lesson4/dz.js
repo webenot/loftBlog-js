@@ -114,7 +114,7 @@ var arr1 = [1, 2, 3, 4],
 console.time();
 console.log(deepEqual(objA, objB));
 console.log(deepEqual(arr1, arr2));
-console.log((0, _keys2.default)(objA).length);
+console.log((0, _keys2.default)(arr1).length);
 //console.log(typeof a);
 console.timeEnd();
 
