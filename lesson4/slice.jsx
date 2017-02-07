@@ -4,7 +4,7 @@ let slice = function () {
 	}
 	for(let i = 0; i < 2; i++) {
 		if (typeof arguments[i] !== 'undefined') {
-			let n = (i + 1) * 1;
+			let n = i + 1;
 			throw new Error(n + 'й аргумент функции slice не определен');
 		}
 	}
@@ -15,9 +15,9 @@ let slice = function () {
 		throw new Error('Второй параметр функции slice должен быть числом');
 	}
 	let out = [], j = 0, array = arguments[0];
-	let begin = (arguments[1] < 0) ? (array.length + 1 * arguments[1]) : (arguments[1] - 1);
+	let begin = (arguments[1] < 0) ? (array.length + parseInt(arguments[1])) : (parseInt(arguments[1]) - 1);
 
-	let end = (typeof arguments[2] !== 'undefined') ? arguments[2] - 1 : array.length - 1;
+	let end = (typeof arguments[2] !== 'undefined') ? parseInt(arguments[2]) - 1 : array.length - 1;
 
 	for (let i = begin; i < end; i++) {
 		out[j] = array[i];

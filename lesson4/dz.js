@@ -1,14 +1,14 @@
 'use strict';
 
-var forEach = require('./forEach');
-var filter = require('./filter');
-var map = require('./map');
-var slice = require('./slice');
-var reduce = require('./reduce');
-var splice = require('./splice');
+//let forEach = require('./forEach');
+//let filter = require('./filter');
+//let map = require('./map');
+//let slice = require('./slice');
+//let reduce = require('./reduce');
+//let splice = require('./splice');
 var deepEqual = require('./deepEqual');
 
-var array = [1, 2, 3, 4, 5, 6];
+//let array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
 
 //let greaterThan4 = filter(array, item => item > 4);

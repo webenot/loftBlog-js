@@ -4,7 +4,7 @@ let filter = (source, fn) => {
 	}
 	for(let i = 0; i < 2; i++) {
 		if (typeof arguments[i] !== 'undefined') {
-			let n = (i + 1) * 1;
+			let n = i + 1;
 			throw new Error(n + 'й аргумент функции filter не определен');
 		}
 	}

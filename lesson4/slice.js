@@ -6,7 +6,7 @@ var slice = function slice() {
 	}
 	for (var i = 0; i < 2; i++) {
 		if (typeof arguments[i] !== 'undefined') {
-			var n = (i + 1) * 1;
+			var n = i + 1;
 			throw new Error(n + 'й аргумент функции slice не определен');
 		}
 	}
@@ -19,9 +19,9 @@ var slice = function slice() {
 	var out = [],
 	    j = 0,
 	    array = arguments[0];
-	var begin = arguments[1] < 0 ? array.length + 1 * arguments[1] : arguments[1] - 1;
+	var begin = arguments[1] < 0 ? array.length + parseInt(arguments[1]) : parseInt(arguments[1]) - 1;
 
-	var end = typeof arguments[2] !== 'undefined' ? arguments[2] - 1 : array.length - 1;
+	var end = typeof arguments[2] !== 'undefined' ? parseInt(arguments[2]) - 1 : array.length - 1;
 
 	for (var _i = begin; _i < end; _i++) {
 		out[j] = array[_i];

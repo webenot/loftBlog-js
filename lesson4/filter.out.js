@@ -8,7 +8,7 @@ var filter = function filter(source, fn) {
 	}
 	for (var i = 0; i < 2; i++) {
 		if (typeof _arguments[i] !== 'undefined') {
-			var n = (i + 1) * 1;
+			var n = i + 1;
 			throw new Error(n + 'й аргумент функции filter не определен');
 		}
 	}

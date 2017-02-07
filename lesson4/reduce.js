@@ -6,7 +6,7 @@ var reduce = function reduce(source, fn, initialValue) {
 	}
 	for (var i = 0; i < 2; i++) {
 		if (typeof arguments[i] !== 'undefined') {
-			var n = (i + 1) * 1;
+			var n = i + 1;
 			throw new Error(n + 'й аргумент функции reduce не определен');
 		}
 	}
