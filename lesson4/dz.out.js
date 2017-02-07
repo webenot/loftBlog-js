@@ -8,79 +8,73 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var deepEqual = function deepEqual(obj1, obj2) {
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
+	}
+	if (typeof obj1 !== 'undefined' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
+		throw new Error('Первый параметр функции deepEqual должен быть объектом');
+	}
+	if (typeof obj2 !== 'undefined' && (typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object') {
+		throw new Error('Второй параметр функции deepEqual должен быть объектом');
+	}
 
-	try {
-		if (arguments.length === 0) {
-			throw new Error('Вы не передали никаких аргументов');
-		}
-		if (typeof obj1 !== 'undefined' && (typeof obj1 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj1)) !== 'object') {
-			throw new Error('Первый параметр функции deepEqual должен быть объектом');
-		}
-		if (typeof obj2 !== 'undefined' && (typeof obj2 === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj2)) !== 'object') {
-			throw new Error('Второй параметр функции deepEqual должен быть объектом');
-		}
+	var equality = true;
 
-		var equality = true;
+	if (obj1 === obj2) return true;
 
-		if (obj1 === obj2) return true;
+	if (obj1.length !== obj1.length) {
+		return false;
+	}
 
-		if (obj1.length !== obj1.length) {
-			return false;
-		}
-
-		for (var arg1 in obj1) {
-			if (obj2[arg1] !== undefined) {
-				if (obj2[arg1] === obj1[arg1]) {
-					equality = equality && true;
-				} else {
-					if ((0, _typeof3.default)(obj2[arg1]) === 'object' && (0, _typeof3.default)(obj1[arg1]) === 'object') {
-						if (obj2[arg1].length !== obj1[arg1].length) {
-							equality = equality && false;
-						} else {
+	for (var arg1 in obj1) {
+		if (obj2[arg1] !== undefined) {
+			if (obj2[arg1] === obj1[arg1]) {
+				equality = equality && true;
+			} else {
+				if ((0, _typeof3.default)(obj2[arg1]) === 'object' && (0, _typeof3.default)(obj1[arg1]) === 'object') {
+					if (obj2[arg1].length !== obj1[arg1].length) {
+						equality = equality && false;
+					} else {
+						try {
+							if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
+								equality = equality && true;
+							} else {
+								equality = equality && false;
+							}
+						} catch (e) {
 							try {
-								if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
-									equality = equality && true;
-								} else {
-									equality = equality && false;
-								}
-							} catch (e) {
-								try {
-									obj2[arg1].forEach(function (item, i, arr) {});
-									obj1[arg1].forEach(function (item, i, arr) {});
-									for (var i = 0; i < obj1[arg1].length; i++) {
-										if (obj1[arg1][i] === obj2[arg1][i]) {
-											equality = equality && true;
-										} else {
-											if ((0, _typeof3.default)(obj2[arg1][i]) === 'object' && (0, _typeof3.default)(obj1[arg1][i]) === 'object') {
-												if (obj2[arg1].length !== obj1[arg1].length) {
-													equality = equality && false;
-												} else {
-													equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
-												}
-											} else {
+								obj2[arg1].forEach(function (item, i, arr) {});
+								obj1[arg1].forEach(function (item, i, arr) {});
+								for (var i = 0; i < obj1[arg1].length; i++) {
+									if (obj1[arg1][i] === obj2[arg1][i]) {
+										equality = equality && true;
+									} else {
+										if ((0, _typeof3.default)(obj2[arg1][i]) === 'object' && (0, _typeof3.default)(obj1[arg1][i]) === 'object') {
+											if (obj2[arg1].length !== obj1[arg1].length) {
 												equality = equality && false;
+											} else {
+												equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
 											}
+										} else {
+											equality = equality && false;
 										}
 									}
-								} catch (e) {
-									equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
 								}
+							} catch (e) {
+								equality = deepEqual(obj2[arg1], obj1[arg1]) && equality;
 							}
 						}
-					} else {
-						equality = equality && false;
 					}
+				} else {
+					equality = equality && false;
 				}
-			} else {
-				equality = equality && false;
 			}
+		} else {
+			equality = equality && false;
 		}
-
-		return equality;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
 	}
+
+	return equality;
 };
 
 module.exports = deepEqual;
@@ -198,7 +192,10 @@ var objB = {
 var arr1 = [1, 2, 3, 4],
     arr2 = [2, 1, 3, 4];
 
-console.log(deepEqual(objA, objB));
+console.time();
+//console.log(deepEqual(objA, objB));
+console.log(deepEqual(arr1, arr2));
+console.timeEnd();
 //console.log(deepEqual(arr1, arr2));
 
 
@@ -212,26 +209,21 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var filter = function filter(source, fn) {
-	try {
-		if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
-			throw new Error('Первый параметр функции filter должен быть массивом');
-		}
-		if (typeof fn !== 'function') {
-			throw new Error('Второй параметр функции forEach должен быть функцией');
-		}
-		var out = [],
-		    j = 0;
-		for (var i = 0; i < source.length; i++) {
-			if (fn(source[i])) {
-				out[j] = source[i];
-				j++;
-			}
-		}
-		return out;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
+	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+		throw new Error('Первый параметр функции filter должен быть массивом');
 	}
+	if (typeof fn !== 'function') {
+		throw new Error('Второй параметр функции forEach должен быть функцией');
+	}
+	var out = [],
+	    j = 0;
+	for (var i = 0; i < source.length; i++) {
+		if (fn(source[i])) {
+			out[j] = source[i];
+			j++;
+		}
+	}
+	return out;
 };
 
 module.exports = filter;
@@ -247,21 +239,16 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var forEach = function forEach(source, fn) {
-	try {
-		if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
-			throw new Error('Первый параметр функции forEach должен быть массивом');
-		}
-		if (typeof fn !== 'function') {
-			throw new Error('Второй параметр функции forEach должен быть функцией');
-		}
-		for (var i = 0; i < source.length; i++) {
-			fn(source[i]);
-		}
-		return 1;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
+	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+		throw new Error('Первый параметр функции forEach должен быть массивом');
 	}
+	if (typeof fn !== 'function') {
+		throw new Error('Второй параметр функции forEach должен быть функцией');
+	}
+	for (var i = 0; i < source.length; i++) {
+		fn(source[i]);
+	}
+	return 1;
 };
 
 module.exports = forEach;
@@ -277,22 +264,17 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var map = function map(source, fn) {
-	try {
-		if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
-			throw new Error('Первый параметр функции map должен быть массивом');
-		}
-		if (typeof fn !== 'function') {
-			throw new Error('Второй параметр функции forEach должен быть функцией');
-		}
-		var out = [];
-		for (var i = 0; i < source.length; i++) {
-			out[i] = fn(source[i]);
-		}
-		return out;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
+	if ((typeof source === 'undefined' ? 'undefined' : (0, _typeof3.default)(source)) !== 'object') {
+		throw new Error('Первый параметр функции map должен быть массивом');
 	}
+	if (typeof fn !== 'function') {
+		throw new Error('Второй параметр функции forEach должен быть функцией');
+	}
+	var out = [];
+	for (var i = 0; i < source.length; i++) {
+		out[i] = fn(source[i]);
+	}
+	return out;
 };
 
 module.exports = map;
@@ -302,41 +284,36 @@ module.exports = map;
 'use strict';
 
 var reduce = function reduce(source, fn, initialValue) {
-	try {
-		if (typeof source === 'undefined') {
-			throw new Error('Не передано первый параметр');
-		}
-		if (typeof fn !== 'function') {
-			throw new Error('Второй параметр функции reduce должен быть функцией');
-		}
-		var object = Object(source);
-		var result = void 0,
-		    key = 0,
-		    length = object.length;
-		if (typeof initialValue !== 'undefined') {
-			result = initialValue;
-		} else {
-			while (key < length && !(key in object)) {
-				//console.log(!(key in object));
-				key++;
-			}
-			if (key >= length) {
-				throw new TypeError('Массив пуст и не задан третий параметр');
-			}
-			result = object[key++];
-		}
-		while (key < length) {
-			if (key in object) {
-				result = fn(result, object[key], key, object);
-			}
-
+	if (typeof source === 'undefined') {
+		throw new Error('Не передано первый параметр');
+	}
+	if (typeof fn !== 'function') {
+		throw new Error('Второй параметр функции reduce должен быть функцией');
+	}
+	var object = Object(source);
+	var result = void 0,
+	    key = 0,
+	    length = object.length;
+	if (typeof initialValue !== 'undefined') {
+		result = initialValue;
+	} else {
+		while (key < length && !(key in object)) {
+			//console.log(!(key in object));
 			key++;
 		}
-		return result;
-	} catch (e) {
-		console.error(e.message);
-		//return 0;
+		if (key >= length) {
+			throw new TypeError('Массив пуст и не задан третий параметр');
+		}
+		result = object[key++];
 	}
+	while (key < length) {
+		if (key in object) {
+			result = fn(result, object[key], key, object);
+		}
+
+		key++;
+	}
+	return result;
 };
 
 module.exports = reduce;
@@ -352,38 +329,31 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var slice = function slice() {
-	//console.log(arguments.length);
-	try {
-
-		if (arguments.length === 0) {
-			throw new Error('Вы не передали никаких аргументов');
-		}
-		if ((0, _typeof3.default)(arguments[0]) !== 'object') {
-			throw new Error('Первый параметр функции slice должен быть массивом');
-		}
-		for (var i = 1; i < arguments.length; i++) {
-			if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
-				var n = (i + 1) * 1;
-				throw new Error(n + 'й параметр функции splice должен быть числом');
-			}
-		}
-		var out = [],
-		    j = 0,
-		    array = arguments[0];
-		var begin = arguments[1] !== undefined ? arguments[1] < 0 ? array.length + 1 * arguments[1] : arguments[1] - 1 : 0;
-		//console.log(begin);
-		var end = arguments[2] !== undefined ? arguments[2] - 1 : array.length - 1;
-		//console.log(end);
-		for (var _i = begin; _i < end; _i++) {
-			out[j] = array[_i];
-			j++;
-		}
-
-		return out;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
 	}
+	if ((0, _typeof3.default)(arguments[0]) !== 'object') {
+		throw new Error('Первый параметр функции slice должен быть массивом');
+	}
+	for (var i = 1; i < arguments.length; i++) {
+		if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й параметр функции splice должен быть числом');
+		}
+	}
+	var out = [],
+	    j = 0,
+	    array = arguments[0];
+	var begin = arguments[1] !== undefined ? arguments[1] < 0 ? array.length + 1 * arguments[1] : arguments[1] - 1 : 0;
+	//console.log(begin);
+	var end = arguments[2] !== undefined ? arguments[2] - 1 : array.length - 1;
+	//console.log(end);
+	for (var _i = begin; _i < end; _i++) {
+		out[j] = array[_i];
+		j++;
+	}
+
+	return out;
 };
 
 module.exports = slice;
@@ -399,53 +369,47 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var splice = function splice() {
-	try {
-
-		if (arguments.length === 0) {
-			throw new Error('Вы не передали никаких аргументов');
-		}
-		if ((0, _typeof3.default)(arguments[0]) !== 'object') {
-			throw new Error('Первый параметр функции splice должен быть массивом');
-		}
-		for (var i = 1; i < arguments.length; i++) {
-			if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
-				var n = (i + 1) * 1;
-				throw new Error(n + 'й параметр функции splice должен быть числом');
-			}
-		}
-		var out = [],
-		    array = arguments[0];
-		var begin = arguments[1] !== undefined ? arguments[1] : null;
-		var end = arguments[2] !== undefined ? arguments[2] : array.length;
-
-		var arr = [];
-		for (var _i = 3, k = 0; _i < arguments.length; _i++, k++) {
-			arr[k] = arguments[_i];
-		}
-
-		if (begin === null) {
-			throw new Error('Вы не ввели номер первого элемента, с которого следует начать удаление');
-		}
-
-		for (var _i2 = 0; _i2 < begin; _i2++) {
-			out[_i2] = array[_i2];
-		}
-
-		if (arr.length > 0) {
-			for (var _i3 = begin, _k = 0; _k < arr.length; _i3++, _k++) {
-				out[_i3] = arr[_k];
-			}
-		}
-
-		for (var _i4 = (end + begin) * 1, _k2 = out.length; _i4 < array.length; _i4++, _k2++) {
-			out[_k2] = array[_i4];
-		}
-
-		return out;
-	} catch (e) {
-		console.error(e.message);
-		return 0;
+	if (arguments.length === 0) {
+		throw new Error('Вы не передали никаких аргументов');
 	}
+	if ((0, _typeof3.default)(arguments[0]) !== 'object') {
+		throw new Error('Первый параметр функции splice должен быть массивом');
+	}
+	for (var i = 1; i < arguments.length; i++) {
+		if (typeof arguments[i] !== 'undefined' && typeof arguments[i] !== 'number') {
+			var n = (i + 1) * 1;
+			throw new Error(n + 'й параметр функции splice должен быть числом');
+		}
+	}
+	var out = [],
+	    array = arguments[0];
+	var begin = arguments[1] !== undefined ? arguments[1] : null;
+	var end = arguments[2] !== undefined ? arguments[2] : array.length;
+
+	var arr = [];
+	for (var _i = 3, k = 0; _i < arguments.length; _i++, k++) {
+		arr[k] = arguments[_i];
+	}
+
+	if (begin === null) {
+		throw new Error('Вы не ввели номер первого элемента, с которого следует начать удаление');
+	}
+
+	for (var _i2 = 0; _i2 < begin; _i2++) {
+		out[_i2] = array[_i2];
+	}
+
+	if (arr.length > 0) {
+		for (var _i3 = begin, _k = 0; _k < arr.length; _i3++, _k++) {
+			out[_i3] = arr[_k];
+		}
+	}
+
+	for (var _i4 = (end + begin) * 1, _k2 = out.length; _i4 < array.length; _i4++, _k2++) {
+		out[_k2] = array[_i4];
+	}
+
+	return out;
 };
 
 module.exports = splice;
