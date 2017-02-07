@@ -11,10 +11,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //let map = require('./map');
 //let slice = require('./slice');
 //let reduce = require('./reduce');
-//let splice = require('./splice');
+var splice = require('./splice');
 var deepEqual = require('./deepEqual');
 
-//let array = [1, 2, 3, 4, 5, 6];
+var array = [1, 2, 3, 4, 5, 6];
 //forEach(array, item => console.log(item));
 
 //let greaterThan4 = filter(array, item => item > 4);
@@ -24,9 +24,8 @@ var deepEqual = require('./deepEqual');
 //console.log(sqare);
 
 //console.log(slice(array, 3, 5));
-
-//console.log(splice(array, 3, 2, 1, 1, 1));
-
+console.log(splice(array, 3, 2, 1, 1, 1));
+console.log(array);
 /*console.log(reduce(array, function(a, b) {
 	return a + b;
 }, 0));*/
