@@ -110,6 +110,6 @@ var arr1 = [1, 2, 3, 4],
     arr2 = [2, 1, 3, 4];
 
 console.log(deepEqual(objA, objB));
-console.log(deepEqual(arr1, arr2));
+//console.log(deepEqual(arr1, arr2));
 
 //# sourceMappingURL=dz.js.map

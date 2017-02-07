@@ -8,7 +8,7 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var deepEqual = function deepEqual(obj1, obj2) {
-	//console.log(arguments.length);
+
 	try {
 		if (arguments.length === 0) {
 			throw new Error('Вы не передали никаких аргументов');
@@ -38,7 +38,7 @@ var deepEqual = function deepEqual(obj1, obj2) {
 							equality = equality && false;
 						} else {
 							try {
-								if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].getMonth() === obj2[arg1].getMonth() && obj1[arg1].getFullYear() === obj2[arg1].getFullYear() && obj1[arg1].getHours() === obj2[arg1].getHours() && obj1[arg1].getMinutes() === obj2[arg1].getMinutes() && obj1[arg1].getSeconds() === obj2[arg1].getSeconds() && obj1[arg1].getMilliseconds() === obj2[arg1].getMilliseconds()) {
+								if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
 									equality = equality && true;
 								} else {
 									equality = equality && false;
@@ -199,7 +199,7 @@ var arr1 = [1, 2, 3, 4],
     arr2 = [2, 1, 3, 4];
 
 console.log(deepEqual(objA, objB));
-console.log(deepEqual(arr1, arr2));
+//console.log(deepEqual(arr1, arr2));
 
 
 },{"./deepEqual":1,"./filter":3,"./forEach":4,"./map":5,"./reduce":6,"./slice":7,"./splice":8}],3:[function(require,module,exports){

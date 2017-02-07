@@ -1,5 +1,5 @@
 let deepEqual = function (obj1, obj2) {
-	//console.log(arguments.length);
+
 	try {
 		if (arguments.length === 0) {
 			throw new Error('Вы не передали никаких аргументов');
@@ -30,7 +30,7 @@ let deepEqual = function (obj1, obj2) {
 							equality = equality && false;
 						} else {
 							try {
-								if (obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].getMonth() === obj2[arg1].getMonth() && obj1[arg1].getFullYear() === obj2[arg1].getFullYear() && obj1[arg1].getHours() === obj2[arg1].getHours() && obj1[arg1].getMinutes() === obj2[arg1].getMinutes() && obj1[arg1].getSeconds() === obj2[arg1].getSeconds() && obj1[arg1].getMilliseconds() === obj2[arg1].getMilliseconds()) {
+								if(obj1[arg1].getDate() === obj2[arg1].getDate() && obj1[arg1].valueOf() === obj2[arg1].valueOf()) {
 									equality = equality && true;
 								} else {
 									equality = equality && false;
