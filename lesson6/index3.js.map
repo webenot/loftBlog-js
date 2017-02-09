@@ -1,0 +1,1 @@
+{"version":3,"sources":["index3.jsx"],"names":[],"mappings":";;AAAA,IAAI,SAAS,SAAS,aAAT,CAAuB,QAAvB,CAAb;AACA,QAAQ,GAAR,CAAY,OAAO,eAAnB","file":"index3.js","sourcesContent":["let iframe = document.querySelector('iframe');\r\nconsole.dir(iframe.contentDocument);"]}

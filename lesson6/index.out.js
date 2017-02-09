@@ -44,24 +44,48 @@ for (let el of container.childNodes) {
 //console.dir(container.childNodes);
 //console.log(el1.parentNode.parentNode.parentNode.parentNode.parentNode);
 //console.log(el1.parentElement.parentElement.parentElement.parentElement);
-var el = document.querySelector('.c1');
+//let el = document.querySelector('.c1');
 //let textNode = el.nextSibling;
 //console.log(el.nodeValue);
 //console.log(el.textContent);
 //let parent = el.parentNode;
 //console.log(parent.textContent);
 
-var newElement = document.createElement('div');
-container.appendChild(newElement);
+//let newElement = document.createElement('div');
+//container.appendChild(newElement);
 
-newElement.innerText = 'Привет';
+//newElement.innerText = 'Привет';
 
-container.insertBefore(newElement, container.firstElementChild);
+///container.insertBefore(newElement, container.firstElementChild);
 
-container.removeChild(newElement);
+//container.removeChild(newElement);
 
 //container.removeChild(el);
-el.remove(); // Только с версии 12 InternetExplorer
+//el.remove(); // Только с версии 13 InternetExplorer Edge
+
+var i2 = document.getElementById('i2');
+
+//console.log(i2.className);
+
+//console.dir(i2.classList);
+//i2.classList.add('c3');
+//i2.classList.remove('c2');
+//i2.classList.toggle('c2');
+//i2.classList.toggle('c2');
+
+//console.dir(i2.style);
+
+//i2.style.color = 'blue';
+//console.log(i2.tagName);
+//console.log(i2.attributes.style);
+//i2.setAttribute('my-attr', '123456');
+//i2.className = 'c4 c5';
+//i2.setAttribute('class', 'c6 c7');
+//i2.removeAttribute('my-attr');
+
+var c1 = jQuery('.c1');
+console.log(c1);
+c1.attr('my-attr', '1631341');
 
 
 },{}]},{},[1]);
