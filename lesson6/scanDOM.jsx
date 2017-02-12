@@ -4,7 +4,6 @@ result.tags = {};
 result.text = 0;
 
 let scan = function (container) {
-
 	if(typeof container.childNodes === 'undefined') {
 		return result;
 	}
@@ -27,7 +26,6 @@ let scan = function (container) {
 							enumerable: true, // default false
 							writable: true, // default false - нельзя использовать вместе с get
 							configurable: true // default false
-
 						});
 					}
 				}
@@ -40,7 +38,6 @@ let scan = function (container) {
 					enumerable: true, // default false
 					writable: true, // default false - нельзя использовать вместе с get
 					configurable: true // default false
-
 				});
 			}
 		}

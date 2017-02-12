@@ -94,7 +94,6 @@ result.tags = {};
 result.text = 0;
 
 var scan = function scan(container) {
-
 	if (typeof container.childNodes === 'undefined') {
 		return result;
 	}
@@ -124,7 +123,6 @@ var scan = function scan(container) {
 								enumerable: true, // default false
 								writable: true, // default false - нельзя использовать вместе с get
 								configurable: true // default false
-
 							});
 						}
 					}
@@ -151,7 +149,6 @@ var scan = function scan(container) {
 					enumerable: true, // default false
 					writable: true, // default false - нельзя использовать вместе с get
 					configurable: true // default false
-
 				});
 			}
 		}
