@@ -1,0 +1,1 @@
+{"version":3,"sources":["index4.jsx"],"names":[],"mappings":";;AAAA;AACA,OAAO,gBAAP,CAAwB,MAAxB,EAAgC;AAAA,SAAK,MAAM,8BAAN,CAAL;AAAA,CAAhC","file":"index4.js","sourcesContent":["//document.addEventListener('DOMContentLoaded', e => alert('DOM готов'));\r\nwindow.addEventListener('load', e => alert('Страница полностью загружена'));"]}
