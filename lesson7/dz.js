@@ -10,7 +10,6 @@ var accordeon = document.querySelector('#accordeon');
 
 var openAccordeon = function openAccordeon(e) {
 	if (e.target.lastElementChild !== null) {
-		//e.target.lastElementChild.classList.toggle('hidden');
 		var _iteratorNormalCompletion = true;
 		var _didIteratorError = false;
 		var _iteratorError = undefined;
