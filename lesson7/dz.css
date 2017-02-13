@@ -1,0 +1,33 @@
+.hidden {
+	display: none;
+}
+.accordeon {
+	padding: 0;
+	border: 1px solid #ccc;
+	background-color: #eeeeee;
+	width: 250px;
+	list-style: none;
+}
+
+.accordeon > li {
+	margin: 0;
+	background-color: #fff6c4;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.accordeon > li:last-child {
+	border-bottom: 0;
+}
+
+.accordeon > li > ul {
+	list-style: none;
+	background-color: #8adfff;
+	padding: 10px;
+	margin: 10px -10px -10px -10px;
+	border-top: 1px solid #ccc;
+	transition: display 0.5s ease-out 0.5s;
+	-webkit-transition: display 1s ease-out 0.5s;
+	-moz-transition: display 1s ease-out 0.5s;
+	-o-transition: display 1s ease-out 0.5s;
+}
