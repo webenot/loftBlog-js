@@ -1,3 +1,13 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	height: 500px;
+}
+.container {
+	overflow: hidden;
+	height: 100%;
+}
 .hidden {
 	display: none;
 }
@@ -30,4 +40,21 @@
 	-webkit-transition: display 1s ease-out 0.5s;
 	-moz-transition: display 1s ease-out 0.5s;
 	-o-transition: display 1s ease-out 0.5s;
+}
+
+.left-block {
+	width: 300px;
+	float: left;
+	border: 1px solid #dddddd;
+	padding: 10px;
+}
+
+.right-block {
+	width: calc(100% - 300px);
+	border: 1px solid #5c46dd;
+	float: right;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+
 }
