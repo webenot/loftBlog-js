@@ -80,7 +80,6 @@ var movableElement = void 0,
     shiftY = 0;
 
 var getDiv = function getDiv(e) {
-	console.log('Нажали кнопку мыши', e);
 	if (e.which != 1) {
 		// если клик правой кнопкой мыши
 		return; // то он не запускает перенос
@@ -95,9 +94,6 @@ var getDiv = function getDiv(e) {
 	console.log(shiftX, shiftY);
 };
 var leaveDiv = function leaveDiv(e) {
-	console.log('Отпустили кнопку мыши', e);
-	/*movableElement.style.top = e.clientY - shiftY - cont.top + 'px';
- movableElement.style.left = e.clientX - shiftX - cont.left + 'px';*/
 	movableElement = null;
 };
 var moveDiv = function moveDiv(e) {
@@ -121,7 +117,6 @@ var moveDiv = function moveDiv(e) {
 				movableElement.style.left = e.clientX - shiftX - cont.left + 'px';
 			}
 		}
-		//console.dir(e.currentTarget);
 	}
 };
 
