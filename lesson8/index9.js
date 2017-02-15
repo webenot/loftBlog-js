@@ -1,3 +1,6 @@
+/**
+ * Created by aquilla on 15.02.2017.
+ */
 
 getData.addEventListener('click', () => {
 	let jsonScript = document.createElement('script');
