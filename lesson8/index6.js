@@ -79,6 +79,8 @@ myButton.addEventListener('click', function () {
 		}
 
 		return response;
+	}, function () {
+		return console.error('Произошла ошибка');
 	}).then(function (res) {
 		console.log('Получен ответ от сервера');
 	});
