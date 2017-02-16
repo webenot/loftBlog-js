@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.jsx"],"names":[],"mappings":"AAAA;;AAEA","file":"index.js","sourcesContent":["// IIFE - самовызывающиеся функции\r\n\r\n/*\r\n(function (a, b) {\r\n\tconsole.log(a + b);\r\n})(1, 1);*/\r\n\r\n"]}
