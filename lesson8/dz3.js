@@ -7,10 +7,7 @@ sendAjax('https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.js
 	response.forEach(function (item, i, arr) {
 		cities[i] = item.name;
 	});
-	return cities;
-}).then(function (response) {
-	response.sort();
-	return response;
+	return cities.sort();
 }).then(function (response) {
 	myInput.addEventListener('input', function (e) {
 		container.innerHTML = '';
