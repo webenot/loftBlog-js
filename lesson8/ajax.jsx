@@ -1,6 +1,3 @@
-/*
- ** Функция возвращат объект XMLHttpRequest
- */
 function getXmlHttpRequest() {
 	if (window.XMLHttpRequest) {
 		try {
@@ -19,12 +16,19 @@ function getXmlHttpRequest() {
 	return null;
 }
 
-function sendAjax(url, method, data) {
+function sendAjax(url, method, responseType, data, async, user, pass) {
 	return new Promise((resolve, reject) => {
+		method = method || 'GET';
+		responseType = responseType || 'text';
+		async = async || true;
+		user = user || null;
+		pass = pass || null;
+
 		let xhr = getXmlHttpRequest();
-		xhr.open(method, url);
+		xhr.open(method, url, async, user, pass);
+		xhr.responseType = responseType;
 		xhr.addEventListener('load', () => {
-			resolve(xhr.responseText);
+			resolve(xhr.response);
 		});
 		xhr.addEventListener('error', () => {
 			reject();
@@ -34,14 +38,4 @@ function sendAjax(url, method, data) {
 
 }
 
-let myButton = document.querySelector('#sendAjax');
-
-myButton.addEventListener('click', function () {
-	sendAjax('text.txt', 'GET', ).then(response => {
-		console.log('Файл загружен', response);
-		container.innerText = response;
-		return response;
-	}).then(res => {
-		console.log('Получен ответ от сервера', res);
-	});
-});
+module.exports = sendAjax;

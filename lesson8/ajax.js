@@ -6,9 +6,6 @@ var _promise2 = _interopRequireDefault(_promise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
- ** Функция возвращат объект XMLHttpRequest
- */
 function getXmlHttpRequest() {
 	if (window.XMLHttpRequest) {
 		try {
@@ -25,12 +22,19 @@ function getXmlHttpRequest() {
 	return null;
 }
 
-function sendAjax(url, method, data) {
+function sendAjax(url, method, responseType, data, async, user, pass) {
 	return new _promise2.default(function (resolve, reject) {
+		method = method || 'GET';
+		responseType = responseType || 'text';
+		async = async || true;
+		user = user || null;
+		pass = pass || null;
+
 		var xhr = getXmlHttpRequest();
-		xhr.open(method, url);
+		xhr.open(method, url, async, user, pass);
+		xhr.responseType = responseType;
 		xhr.addEventListener('load', function () {
-			resolve(xhr.responseText);
+			resolve(xhr.response);
 		});
 		xhr.addEventListener('error', function () {
 			reject();
@@ -39,16 +43,6 @@ function sendAjax(url, method, data) {
 	});
 }
 
-var myButton = document.querySelector('#sendAjax');
+module.exports = sendAjax;
 
-myButton.addEventListener('click', function () {
-	sendAjax('text.txt', 'GET').then(function (response) {
-		console.log('Файл загружен', response);
-		container.innerText = response;
-		return response;
-	}).then(function (res) {
-		console.log('Получен ответ от сервера', res);
-	});
-});
-
-//# sourceMappingURL=index5.js.map
+//# sourceMappingURL=ajax.js.map
