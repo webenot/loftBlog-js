@@ -1,50 +1,12 @@
 'use strict';
 
-var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+var _stringify = require('babel-runtime/core-js/json/stringify');
 
-var _getIterator3 = _interopRequireDefault(_getIterator2);
+var _stringify2 = _interopRequireDefault(_stringify);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var accordeon = document.querySelector('#accordeon');
-
-var openAccordeon = function openAccordeon(e) {
-	if (e.target.lastElementChild !== null) {
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-
-		try {
-			for (var _iterator = (0, _getIterator3.default)(e.target.parentNode.children), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var item = _step.value;
-
-				if (item.lastElementChild.className != 'hidden' && item != e.target) item.lastElementChild.classList.toggle('hidden');
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator.return) {
-					_iterator.return();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
-		}
-
-		e.target.lastElementChild.classList.toggle('hidden');
-	}
-};
-
-accordeon.addEventListener('click', openAccordeon);
-
 var createBlock = function createBlock() {
-	var c = document.querySelector('.right-block');
-	c.innerHTML = '';
-	var newDiv = document.createElement('div');
 	var r = Math.floor(Math.random() * 256),
 	    g = Math.floor(Math.random() * 256),
 	    b = Math.floor(Math.random() * 256),
@@ -53,13 +15,20 @@ var createBlock = function createBlock() {
 	    x = Math.floor(Math.random() * (c.clientWidth - width)),
 	    y = Math.floor(Math.random() * (c.clientHeight - height));
 
+	paintDiv('rgb(' + r + ',' + g + ',' + b + ')', width + 'px', height + 'px', x + 'px', y + 'px');
+};
+
+var paintDiv = function paintDiv(color, width, height, x, y) {
+	var c = document.querySelector('.right-block');
+	c.innerHTML = '';
+	var newDiv = document.createElement('div');
 	newDiv.classList.add('draggable');
-	newDiv.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 	newDiv.style.position = 'absolute';
-	newDiv.style.width = width + 'px';
-	newDiv.style.height = height + 'px';
-	newDiv.style.top = y + 'px';
-	newDiv.style.left = x + 'px';
+	newDiv.style.backgroundColor = color;
+	newDiv.style.width = width;
+	newDiv.style.height = height;
+	newDiv.style.top = y;
+	newDiv.style.left = x;
 	newDiv.addEventListener('mouseover', function (e) {
 		e.target.style.cursor = 'move';
 	});
@@ -90,7 +59,6 @@ var getDiv = function getDiv(e) {
 
 	shiftX = e.clientX - box.left;
 	shiftY = e.clientY - box.top;
-	console.log(shiftX, shiftY);
 };
 var leaveDiv = function leaveDiv(e) {
 	movableElement = null;
@@ -125,4 +93,32 @@ container.addEventListener('mousedown', getDiv);
 container.addEventListener('mouseup', leaveDiv);
 container.addEventListener('mousemove', moveDiv);
 
-//# sourceMappingURL=dz.js.map
+var save = document.getElementById('saveState');
+
+save.addEventListener('click', function (e) {
+	var el = document.querySelector('.draggable');
+	if (el) {
+		var date = new Date();
+		date.setFullYear(date.getFullYear() + 1);
+		document.cookie = 'rect=' + (0, _stringify2.default)({ bgc: el.style.backgroundColor, top: el.style.top, left: el.style.left, width: el.style.width, height: el.style.height }) + '; expires=' + date.toUTCString();
+	}
+});
+
+window.addEventListener('load', function () {
+	var params = document.cookie;
+	params = params.split('; ');
+	var rect = '';
+	params.forEach(function (item, index, arr) {
+		var cookie = item.split('=');
+		if (cookie[0] == 'rect') {
+			rect = cookie;
+		}
+	});
+	if (rect) {
+		params = JSON.parse(rect[1]);
+		paintDiv(params.bgc, params.width, params.height, params.left, params.top);
+		console.log(params);
+	}
+});
+
+//# sourceMappingURL=dz3.js.map

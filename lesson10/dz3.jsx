@@ -1,21 +1,4 @@
-let accordeon = document.querySelector('#accordeon');
-
-let openAccordeon = (e) => {
-	if (e.target.lastElementChild !== null) {
-		for (let item of e.target.parentNode.children) {
-			if (item.lastElementChild.className != 'hidden' && item != e.target)
-				item.lastElementChild.classList.toggle('hidden');
-		}
-		e.target.lastElementChild.classList.toggle('hidden');
-	}
-};
-
-accordeon.addEventListener('click', openAccordeon);
-
 let createBlock = () => {
-	let c = document.querySelector('.right-block');
-	c.innerHTML = '';
-	let newDiv = document.createElement('div');
 	let r = Math.floor(Math.random() * (256)),
 		g = Math.floor(Math.random() * (256)),
 		b = Math.floor(Math.random() * (256)),
@@ -24,13 +7,21 @@ let createBlock = () => {
 		x = Math.floor(Math.random() * (c.clientWidth - width)),
 		y = Math.floor(Math.random() * (c.clientHeight - height));
 
+	paintDiv('rgb(' + r + ',' + g + ',' + b + ')', width + 'px', height + 'px', x + 'px', y + 'px');
+
+};
+
+let paintDiv = (color, width, height, x, y) => {
+	let c = document.querySelector('.right-block');
+	c.innerHTML = '';
+	let newDiv = document.createElement('div');
 	newDiv.classList.add('draggable');
-	newDiv.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 	newDiv.style.position = 'absolute';
-	newDiv.style.width = width + 'px';
-	newDiv.style.height = height + 'px';
-	newDiv.style.top = y + 'px';
-	newDiv.style.left = x + 'px';
+	newDiv.style.backgroundColor = color;
+	newDiv.style.width = width;
+	newDiv.style.height = height;
+	newDiv.style.top = y ;
+	newDiv.style.left = x;
 	newDiv.addEventListener('mouseover', (e) => {
 		e.target.style.cursor = 'move';
 	});
@@ -58,7 +49,6 @@ let getDiv = (e) => {
 
 	shiftX = e.clientX - box.left;
 	shiftY = e.clientY - box.top;
-	console.log(shiftX, shiftY);
 };
 let leaveDiv = (e) => {
 	movableElement = null;
@@ -92,3 +82,31 @@ let moveDiv = (e) => {
 container.addEventListener('mousedown', getDiv);
 container.addEventListener('mouseup', leaveDiv);
 container.addEventListener('mousemove', moveDiv);
+
+let save = document.getElementById('saveState');
+
+save.addEventListener('click', (e) => {
+	let el = document.querySelector('.draggable');
+	if (el) {
+		let date = new Date();
+		date.setFullYear(date.getFullYear() + 1);
+		document.cookie = 'rect=' + JSON.stringify({bgc: el.style.backgroundColor, top: el.style.top, left: el.style.left, width: el.style.width, height: el.style.height}) + '; expires=' + date.toUTCString();
+	}
+});
+
+window.addEventListener('load', () => {
+	let params = document.cookie;
+	params = params.split('; ');
+	let rect = '';
+	params.forEach((item, index, arr) => {
+		let cookie = item.split('=');
+		if (cookie[0] == 'rect') {
+			rect = cookie;
+		}
+	});
+	if(rect) {
+		params = JSON.parse(rect[1]);
+		paintDiv(params.bgc, params.width, params.height, params.left, params.top);
+		console.log(params);
+	}
+});

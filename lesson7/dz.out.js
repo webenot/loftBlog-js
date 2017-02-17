@@ -98,11 +98,14 @@ var leaveDiv = function leaveDiv(e) {
 };
 var moveDiv = function moveDiv(e) {
 	if (movableElement) {
-		if (e.clientY - shiftY - cont.top < cont.top) {
+		movableElement.style.top = e.clientY - shiftY + 'px';
+		movableElement.style.left = e.clientX - shiftX + 'px';
+
+		if (e.clientY - shiftY < cont.top) {
 			movableElement.style.top = '0';
 		} else {
 			if (e.clientY - shiftY > cont.top + cont.height - movableElement.clientHeight) {
-				movableElement.style.top = cont.top + cont.height - movableElement.clientHeight + 'px';
+				movableElement.style.top = parseInt(cont.height) - movableElement.clientHeight + 'px';
 			} else {
 				movableElement.style.top = e.clientY - shiftY - cont.top + 'px';
 			}
@@ -111,7 +114,6 @@ var moveDiv = function moveDiv(e) {
 			movableElement.style.left = '0';
 		} else {
 			if (e.clientX - shiftX > cont.left + cont.width - movableElement.clientWidth) {
-				console.log(cont.left + cont.width - movableElement.clientWidth);
 				movableElement.style.left = cont.width - movableElement.clientWidth + 'px';
 			} else {
 				movableElement.style.left = e.clientX - shiftX - cont.left + 'px';
