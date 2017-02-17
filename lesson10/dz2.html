@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home work 2 - Loftschool</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="page-header text-center text-primary">Список кук</h1>
+			<div class="table-responsive">
+				<table class="table table-bordered" id="table">
+					<thead>
+					<tr>
+						<th class="text-center">Кука</th>
+						<th class="text-center">Значение</th>
+						<th></th>
+					</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<div class="h3 text-center text-primary">Добавить куки</div>
+					<form action="" role="form" id="addCookie">
+						<div class="form-group">
+							<label for="cookieName">Имя куку</label>
+							<input type="text" class="form-control" id="cookieName" placeholder="Введите имя куки" required value="">
+						</div>
+						<div class="form-group">
+							<label for="cookieValue">Значение куки</label>
+							<input type="text" class="form-control" id="cookieValue" placeholder="Введите значение куки" required value="">
+						</div>
+						<div class="form-group">
+							<label for="cookieExpires">Длительность хранения куки (дней)</label>
+							<input type="text" class="form-control" id="cookieExpires" placeholder="Введите количество дней хранения куки" required value="">
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Отправить</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<script src="dz2.out.js"></script>
+</body>
+</html>
