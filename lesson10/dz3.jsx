@@ -1,4 +1,5 @@
 let createBlock = () => {
+	let c = document.querySelector('.right-block');
 	let r = Math.floor(Math.random() * (256)),
 		g = Math.floor(Math.random() * (256)),
 		b = Math.floor(Math.random() * (256)),
@@ -107,6 +108,5 @@ window.addEventListener('load', () => {
 	if(rect) {
 		params = JSON.parse(rect[1]);
 		paintDiv(params.bgc, params.width, params.height, params.left, params.top);
-		console.log(params);
 	}
 });

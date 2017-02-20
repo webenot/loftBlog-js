@@ -7,6 +7,7 @@ var _stringify2 = _interopRequireDefault(_stringify);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createBlock = function createBlock() {
+	var c = document.querySelector('.right-block');
 	var r = Math.floor(Math.random() * 256),
 	    g = Math.floor(Math.random() * 256),
 	    b = Math.floor(Math.random() * 256),
@@ -117,7 +118,6 @@ window.addEventListener('load', function () {
 	if (rect) {
 		params = JSON.parse(rect[1]);
 		paintDiv(params.bgc, params.width, params.height, params.left, params.top);
-		console.log(params);
 	}
 });
 
