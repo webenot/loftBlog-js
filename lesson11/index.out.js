@@ -22,6 +22,29 @@ let cb = response => {
 
 VK.Auth.login(cb);*/
 
+// Без промисов
+/*window.addEventListener('load', (e) => {
+	VK.init({
+		apiId: 5883860
+	});
+
+	VK.Auth.login(response => {
+		if (response.status == 'connected') {
+			console.log(response);
+			VK.api('users.get', {'name_case': 'gen'}, response => {
+				if (response.error) {
+					alert(response.error.error_msg);
+				} else {
+					headerInfo.textContent = `Музыка на странице ${response.response[0].first_name} ${response.response[0].last_name}`;
+					console.log(response);
+				}
+			});
+		} else {
+			alert(`Ошибка: ${e.message}`);
+		}
+	}, 8);
+});*/
+
 new _promise2.default(function (resolve) {
 	if (document.readyState === 'complete') {
 		resolve();
